@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face {
+    font-family: 'nature_spiritregular';
+    src: url('font/naturespiritregular-webfont.woff2') format('woff2'),
+         url('font/naturespiritregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'nature_spiritrough';
+    src: url('font/naturespiritrough-webfont.woff2') format('woff2'),
+         url('font/naturespiritrough-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1{
+	font-family: 'nature_spiritrough';
+	size:3em;
+}
+
