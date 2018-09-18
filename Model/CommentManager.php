@@ -3,9 +3,9 @@
 namespace MV\Blog;
 use PDO;
 
-require_once('Model/Backend/Manager.php');
+require_once('Model/Manager.php');
 
-class CommentManager extends Manager;
+class CommentManager extends Manager
 {
 	public function newComment($postid, $author, $comment)
 	{
@@ -30,7 +30,7 @@ class CommentManager extends Manager;
 		return $comment;
 	}
 	
-	public function selectComment($commentid);
+	public function selectComment($commentid)
 	{
 		$Manager =new Manager; 
 		$db = $Manager->dbConnect();

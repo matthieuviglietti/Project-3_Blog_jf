@@ -1,30 +1,34 @@
 <?php
 namespace MV\Blog;
 use PDO;
-require_once('Model/Backend/Manager.php');
+require_once('Model/Manager.php');
 class PostManager extends Manager
 {
-	private var $_db
+	/*private $_db;
 		
 	private function init()
 	{
 		$Manager =new Manager; 
 		$_db = $Manager->dbConnect();
-	}
+	}*/
 	
 	public function createPost($title, $author, $content)
 	{	
+		$Manager =new Manager; 
+		$_db = $Manager->dbConnect();
 		$req = $_db->prepare('INSERT INTO posts(title, author, content, post_date) VALUES (:title, :author, :content, NOW())');
 		$createpost = $req->execute(array(
-			:title => $title
-			:author => $author,
-			:content => $content,));
+			'title' => $title,
+			'author' => $author,
+			'content' => $content));
 		
 		return $createpost;
 	}
 	
 	public function getPosts()
 	{
+		$Manager =new Manager; 
+		$_db = $Manager->dbConnect();
 		$req = $_db->query('SELECT title, content, author, post_date FROM posts ORDER BY post_date DESC');
 		
 		return $req;

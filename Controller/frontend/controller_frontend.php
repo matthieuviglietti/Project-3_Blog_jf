@@ -1,6 +1,6 @@
 <?php
 
-namespace MV\Blog;
+namespace MV\Blog\Front;
 
 require_once('Model/PostManager.php');
 require_once('Model/CommentManager.php');
@@ -12,7 +12,7 @@ class Control
 		
 	public function ListPosts()
 	{
-		$postmanager = new MV\Blog\PostManager;
+		$postmanager = new PostManager;
 		$listposts = $postmanager->getPosts();
 		
 		require('View/frontend/home_view.php');
@@ -20,8 +20,8 @@ class Control
 	
 	public function Post($postid)
 	{
-		$postmanager = new MV\Blog\PostManager;
-		$commentmanager = new MV\Blog\CommentManager;
+		$postmanager = new PostManager;
+		$commentmanager = new CommentManager;
 		$post = $postmanager->getPost($postid);
 		$createcomment = $commentmanager->getComments($postid); //getcomment for one post
 		
@@ -33,7 +33,7 @@ class Control
 	
 	public function CreateComment($postid, $author, $comment)
 	{
-		$commentmanager = new MV\Blog\CommentManager;
+		$commentmanager = new CommentManager;
 		$createcomment = $commentmanager->newComment($postid, $author, $comment);
 		
 		return $createcomment;

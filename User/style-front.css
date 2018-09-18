@@ -37,16 +37,15 @@
 body{
 	margin: 0;
 }
-form{
-	width: 100%;
-	margin: 30px;
-}
+
 header{
 	width: 100%;
-	height: 70px;
+	height: 60px;
 	border-bottom: 1px solid darkgrey;
 	box-shadow: 2px 5px 20px darkgrey;
 	margin-bottom: 40px;
+	padding-top: 10px;
+
 }
 h1{
 	font-family: 'nature_spiritregular';
@@ -59,13 +58,13 @@ h2{
 	font-family: 'marsekdemi';
 	font-size: 0.5em;
 	margin-top: 0;
-	margin-left: 28px;
+	margin-left: 33px;
 }
 
 #logo{
-	float: left; 
-	margin-left: 20px;
-	margin-top: 10px;
+	margin:auto;
+	width: 170px;
+
 }
 
 nav{

@@ -1,15 +1,16 @@
 <?php
 
-namespace MV\BLOG;
+namespace MV\Blog;
 
 require_once('root.php');
 
 class index
 {
-	public function Select ()
+	public function Select()
 	{
-		$root = new Root;
-		$Select = $root->selectRoot();
+		$root = new MV\Blog\Root;
+		$select = $root->selectRoot();
+		
 	}
 }
 		
