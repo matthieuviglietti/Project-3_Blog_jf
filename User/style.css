@@ -10,14 +10,6 @@
 }
 
 @font-face {
-    font-family: 'nature_spiritrough';
-    src: url('font/naturespiritrough-webfont.woff2') format('woff2'),
-         url('font/naturespiritrough-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'marsekdemi';
     src: url('font/marsek-demi-webfont.woff2') format('woff2'),
          url('font/marsek-demi-webfont.woff') format('woff');
@@ -26,9 +18,29 @@
 }
 
 @font-face {
-    font-family: 'nordic_alternativeregular';
-    src: url('font/nordic_alternative_regular-webfont.woff2') format('woff2'),
-         url('font/nordic_alternative_regular-webfont.woff') format('woff');
+    font-family: 'alaskaregular';
+    src: url('font/alaska_font-webfont.woff2') format('woff2'),
+         url('font/alaska_font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'kionaitalic';
+    src: url('font/kiona-itallic-webfont.woff2') format('woff2'),
+         url('font/kiona-itallic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'kionaregular';
+    src: url('font/kiona-regular-webfont.woff2') format('woff2'),
+         url('font/kiona-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -36,10 +48,56 @@
 
 body{
 	margin: 0;
+	background-color:rgba(158,177,208,0.38);
+	/*background-image: url(images/background-form.jpg);*/
 }
+
 form{
-	width: 100%;
-	margin: 30px;
+	width: 800px;
+	padding: 25px;
+	margin: auto;
+	background-color:rgba(246,246,246,0.7);
+	border: solid 1px rgba(218,214,214,0.7);
+	box-shadow: 2px 2px 20px rgba(218,214,214,0.7);
+}
+
+form, label{
+	font-family: 'kionaregular';
+	color: black;
+}
+
+#psubmit{
+	font-family: 'kionaregular';
+	font-size: 1em;
+	width: 180px;
+	height: 45px;
+	background-color: blue;
+	color: white;
+	margin-top: 15px;
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#psubmit:hover{
+	box-shadow: 0 0 35px 7px blue;
+}
+
+#pcancel{
+	font-family: 'kionaregular';
+	font-size: 1em;
+	width: 130px;
+	height: 40px;
+	background-color: white;
+	color: grey;
+	margin: 15px 15px 0 460px;
+	text-align: center;
+}
+
+input{
+	margin-bottom: 20px;
+	border: solid 1px rgba(218,214,214,0.7);
+	height: 30px;
+	width: 400px;
 }
 header{
 	width: 100%;
@@ -47,6 +105,7 @@ header{
 	border-bottom: 1px solid darkgrey;
 	box-shadow: 2px 5px 20px darkgrey;
 	margin-bottom: 40px;
+	background-color: white;
 }
 h1{
 	font-family: 'nature_spiritregular';
@@ -60,6 +119,20 @@ h2{
 	font-size: 0.5em;
 	margin-top: 0;
 	margin-left: 28px;
+}
+
+h3{
+	font-family: 'kionaregular';
+	font-size:3.3em;
+	text-align: center;
+	color: rgba(79,111,163,1.00);
+	border: solid 1px rgba(79,111,163,1.00);
+	width: 845px;
+	margin: auto;
+}
+
+aside{
+	margin-bottom: 20px;
 }
 
 #logo{

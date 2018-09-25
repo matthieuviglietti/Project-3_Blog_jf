@@ -10,14 +10,6 @@
 }
 
 @font-face {
-    font-family: 'nature_spiritrough';
-    src: url('font/naturespiritrough-webfont.woff2') format('woff2'),
-         url('font/naturespiritrough-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'marsekdemi';
     src: url('font/marsek-demi-webfont.woff2') format('woff2'),
          url('font/marsek-demi-webfont.woff') format('woff');
@@ -26,9 +18,29 @@
 }
 
 @font-face {
-    font-family: 'nordic_alternativeregular';
-    src: url('font/nordic_alternative_regular-webfont.woff2') format('woff2'),
-         url('font/nordic_alternative_regular-webfont.woff') format('woff');
+    font-family: 'alaskaregular';
+    src: url('font/alaska_font-webfont.woff2') format('woff2'),
+         url('font/alaska_font-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'kionaitalic';
+    src: url('font/kiona-itallic-webfont.woff2') format('woff2'),
+         url('font/kiona-itallic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'kionaregular';
+    src: url('font/kiona-regular-webfont.woff2') format('woff2'),
+         url('font/kiona-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

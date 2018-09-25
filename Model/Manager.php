@@ -1,8 +1,5 @@
 <?php
 
-namespace MV\Blog;
-use PDO;
-
 class Manager
 {
 	protected function dbConnect()

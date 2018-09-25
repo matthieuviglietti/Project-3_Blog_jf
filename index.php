@@ -1,16 +1,6 @@
 <?php
 
-namespace MV\Blog;
+require('root.php');
+$rooter  = new Root;
 
-require_once('root.php');
-
-class index
-{
-	public function Select()
-	{
-		$root = new MV\Blog\Root;
-		$select = $root->selectRoot();
-		
-	}
-}
-		
+$rooter->selectRoot();

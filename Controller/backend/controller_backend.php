@@ -1,21 +1,48 @@
 <?php
 
-namespace MV\Blog;
-
 require_once('Model/PostManager.php');
 require_once('Model/CommentManager.php');
+require_once('Model/AdminManager.php');
 
 class Controlback
 {
+	public function LogIn($name, $pass)
+	{
+		$adminmanager= new AdminManager;
+		$resultat = $adminmanager->logIn($name, $pass);
+		
+		$ispasswordCorrect = password_verify($pass, $resultat['pass']);
+
+		if ($ispasswordCorrect)
+		{
+				session_start();
+				$_SESSION['id'] = $resultat['id'];
+				$_SESSION['name'] = $name;
+				header('Location: root.php?action=logged');
+		}
+		
+		else{
+				throw new Exception('L\'identifiant ou le mot de passe est incorrect');
+			}
+		
+	}
 	
-	//For PostManager 
+	public function Logged()
+	{
+		header('Location: root.php?action=board');
+	}
+	
+	public function Board()
+	{
+		require('View/backend/back_home_view.php');
+	}
 	
 	public function CreatePost($title, $author, $content)
 	{
 		$postmanager = new PostManager;
 		$createpost = $postmanager->createPost($title, $author, $content);
 	
-		header('Location:View/backend/backend_view.php');
+		header('Location:');
 	}
 		
 	public function ListPosts()
@@ -59,6 +86,14 @@ class Controlback
 		$selectComment = $commentmanager->selectComment($commentid);
 		
 		require('View/frontend/update_back_view.php');
+	}
+	
+	public function AlertList()
+	{
+		$commentmanager = new CommentManager;
+		$alertlist = $commentmanager->alertList();
+		
+		require('View/backend/alert_back_view.php');
 	}
 	
 	public function Updatecomment($commentid)

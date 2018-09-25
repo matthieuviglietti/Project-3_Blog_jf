@@ -1,22 +1,13 @@
 <?php
-namespace MV\Blog;
-use PDO;
+
 require_once('Model/Manager.php');
 class PostManager extends Manager
 {
-	/*private $_db;
-		
-	private function init()
-	{
-		$Manager =new Manager; 
-		$_db = $Manager->dbConnect();
-	}*/
-	
+
 	public function createPost($title, $author, $content)
 	{	
-		$Manager =new Manager; 
-		$_db = $Manager->dbConnect();
-		$req = $_db->prepare('INSERT INTO posts(title, author, content, post_date) VALUES (:title, :author, :content, NOW())');
+		$db = $this->dbConnect();
+		$req = $db->prepare('INSERT INTO posts(title, author, content, post_date) VALUES (:title, :author, :content, NOW())');
 		$createpost = $req->execute(array(
 			'title' => $title,
 			'author' => $author,
@@ -27,17 +18,31 @@ class PostManager extends Manager
 	
 	public function getPosts()
 	{
-		$Manager =new Manager; 
-		$_db = $Manager->dbConnect();
-		$req = $_db->query('SELECT title, content, author, post_date FROM posts ORDER BY post_date DESC');
+		$db = $this->dbConnect();
+		$req = $db->query('SELECT id, title, content, author, post_date FROM posts ORDER BY post_date DESC');
 		
 		return $req;
 		
 	}
 	
+
+	/*public function subMyString( $contenu, $limite, $separateur = '...' ) 
+	{
+		if( strlen($contenu) >= $limite ) 
+		{
+			$contenu = substr( $contenu, 0, $limite );
+			$contenu = substr( $contenu, 0, strrpos($contenu, ' ') );
+			$contenu .= $separateur;
+		}
+     
+    return $contenu;
+	}*/
+
+	
 	public function getPost($postid)
 	{
-		$get = $_db->prepare('SELECT id, title, author, content, post_date FROM posts WHERE id = ?');
+		$db = $this->dbConnect();
+		$get = $db->prepare('SELECT id, title, author, content, post_date FROM posts WHERE id = ?');
 		$get->execute(array($postid));
 		$getpost = $get->fetch();
 		
@@ -46,7 +51,8 @@ class PostManager extends Manager
 	
 	public function updatePost($title, $content, $postid)
 	{
-		$req = $_db->prepare('UPDATE posts SET title = ?, content = ?, post_date = NOW() WHERE id = ?');
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE posts SET title = ?, content = ?, post_date = NOW() WHERE id = ?');
 		$req->execute(array($title, $content, $postid));
 		
 		return $req;
@@ -54,7 +60,8 @@ class PostManager extends Manager
 	
 	public function deletePost($postid)
 	{
-		$req = $_db->prepare('DELETE FROM posts WHERE id= ?');
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM posts WHERE id= ?');
 		$req->execute(array($postid));
 		
 		return $req;
