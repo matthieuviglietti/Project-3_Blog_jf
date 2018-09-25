@@ -14,24 +14,41 @@
 <body>
 	
 	<header class="header">
-		<div id="logo">
-			<h1>Jean Forteroche</h1>
-			<h2>Acteur - Écrivain</h2>
-		</div>
+		<a href="index.php">
+			<div id="logo">
+				<h1>Jean Forteroche</h1>
+				<h2>Acteur - Écrivain</h2>
+			</div>
+		</a>
+		
+		<a id="home" href="index.php">Accueil</a>
+	
 	</header>
 	
 	<?php
 	while ($datapost = $listposts->fetch())
 	{
-		echo 'Titre de l\'épisode :' .$datapost['title']. '<br/>
-			publié par ' .$datapost['author']. 'le ' .$datapost['post_date'].'<br/>'
-			.nl2br($datapost['content']).
-			'<br/> 
-			<a href="index.php?action=postfront&amp;id='.$datapost["id"].'">Commentaires</a> <br/>';		
+	?>
+	
+	<div id="container">
+		<section id="title">
+			<h4>"<?= nl2br($datapost['title'])?>"</h4><br/>
+			<p class="book">Un billet simple pour l'Alaska</p>
+			<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date']?></p><br/>
+		</section>
+	
+		<article id="content">
+			<?=nl2br($datapost['content'])?>
+			<br/> 
+			<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> <br/>	
+		</article>
+	</div>
+	
+	<?php
 	}
 	?>
 	
-	<footer><a href="User/View/connexion.php">Admin</a></footer>
+	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	
 	
 	
