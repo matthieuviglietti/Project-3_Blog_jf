@@ -15,23 +15,33 @@
 	
 	<nav id="nav">
 		<ul>
-			<li><a href="root.php?action=board">Publier un épisode</a></li>
-			<li><a id="current"href="root.php?action=listp">Épisodes</a></li>
-			<li><a href="root.php?action=alertcb">Commentaires signalés</a></li>
-			<li><a href="logout_view.php">Se déconnecter</a></li>
+			<li><a href="index.php?action=board">Publier un épisode</a></li>
+			<li><a id="current"href="index.php?action=listp">Épisodes</a></li>
+			<li><a href="index.php?action=alertcb">Commentaires signalés</a></li>
+			<li><a href="index.php?action=logout.php">Se déconnecter</a></li>
 		</ul>
 	</nav>
 	</header>
 	
-	<h2>Liste des épisodes déjà diffusés</h2>
+	<h3>Liste des épisodes déjà diffusés</h3>
 	
+	<div id="container">
 	<?php
 	while ($datapost = $listposts->fetch())
 	{
-		echo 'Titre de l\'épisode :' .$datapost['title']. '<br/>
-			'.nl2br($datapost['content']);
-			
+	?>
+		
+			<section id="title">
+				<h4>" <?=$datapost['title']?> "</h4>
+				<aside id="button">
+					<a id="suppr" href="index.php?action=deletepconf&amp;id=<?=$datapost['id']?>">Supprimer</a>
+					<a id="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>
+				</aside>
+			</section>
+		
+	<?php
 	}
 	?>
+	</div>
 </body>
 </html>

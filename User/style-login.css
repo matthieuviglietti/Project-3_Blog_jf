@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face {
+    font-family: 'nature_spiritregular';
+    src: url('font/naturespiritregular-webfont.woff2') format('woff2'),
+         url('font/naturespiritregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'marsekdemi';
+    src: url('font/marsek-demi-webfont.woff2') format('woff2'),
+         url('font/marsek-demi-webfont.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kionaitalic';
+    src: url('font/kiona-itallic-webfont.woff2') format('woff2'),
+         url('font/kiona-itallic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'kionaregular';
+    src: url('font/kiona-regular-webfont.woff2') format('woff2'),
+         url('font/kiona-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'amaticbold';
+    src: url('font/amatic-bold-webfont.woff2') format('woff2'),
+         url('font/amatic-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'amatic_scregular';
+    src: url('font/amaticsc-regular-webfont.woff2') format('woff2'),
+         url('font/amaticsc-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+	background-image: url(images/fond-texte.png);
+	background-repeat: repeat;
+	margin: 0;
+}
+
+#cancel{
+	text-decoration: none;
+	color: black;
+	font-family: 'kionaregular';
+	font-size: 0.8em;
+	margin: auto;
+	width: 100px;
+	display: block;
+	padding-top: 10px;
+}
+
+header{
+	width: 100%;
+	height: 60px;
+	margin-bottom: 50px;
+	padding-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#logo{
+	width: 170px;
+	margin-left: 30px;
+}
+
+h1{
+	font-family: 'nature_spiritregular';
+	font-size:2em;
+	margin-bottom: 3px;
+	margin-top: 0;
+}
+
+h2{
+	font-family: 'marsekdemi';
+	font-size: 0.5em;
+	margin-top: 0;
+	margin-left: 33px;
+}
+
+#home{
+	width:100px;
+	height: 30px;
+	text-align: center;
+	line-height: 33px;
+	border-radius: 2px;
+	margin-right: 50px;
+	font-family: 'nature_spiritregular';
+	font-size:1.2em;
+	color: black;
+	border: 1px solid black;
+	transition-property: background-color, color, border, border-radius;
+	transition-duration: 0.6s;
+}
+
+#home:hover{
+	border: 1px solid #2B9EC5;
+	border-radius: 20px;
+	color: #2B9EC5;
+}
+
+nav{
+	list-style: none;
+	padding: 0;
+	text-align: right;
+}
+
+nav li{
+	display: inline-block;
+	margin-right: 40px;
+}
+
+nav li a{
+	font-family: 'nature_spiritregular';
+	text-decoration: none;
+	color: dimgrey;
+	font-size: 1em;
+}
+
+nav li a:hover{
+	color: blue;
+	text-decoration:line-through;
+}
+
+#current{
+	color: red;
+}
+
+nav ul{
+	margin-right: 30px;
+	margin-top: 20px;
+	float: right;
+}
+
+form{
+	font-family: 'kionaregular';
+	background-color : rgba(53, 74, 82, 0.7);
+	width: 300px;
+	height: 140px;
+	margin: auto;
+	padding-top: 60px;
+	padding-left: 50px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 7px 0px #354A52;
+	color: white;
+}
+
+form input{
+	margin-bottom: 5px;
+	height: 15px;
+}
+
+#submit{
+	margin-left: 75px;
+	margin-top: 25px;
+	width: 100px;
+	height: 40px;
+	font-family: 'kionaregular';
+	font-size: 0.7em;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #B29D78;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+	transition-property: background-color;
+	transition-duration: 1s;
+}
+
+#submit:hover{
+	background-color: #59767F;
+}
+
+#submitsuppr{
+	margin-left: 30px;
+	margin-top: 25px;
+	width: 200px;
+	height: 40px;
+	font-family: 'kionaregular';
+	font-size: 0.7em;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #B29D78;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+	transition-property: background-color;
+	transition-duration: 1s;
+}
+
+#submitsuppr:hover{
+	background-color: rgba(255,0,4,1.00);
+}
+
+#label{
+	margin-left: 20px;
+}

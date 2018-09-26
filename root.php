@@ -39,6 +39,14 @@ class Root
 						
 		
 					}
+					
+					//to Login View
+					
+					elseif ($_GET['action'] == 'gotologin')
+					{
+						$controlb = new Controlback;
+						$loginview = $controlb->LoginView();
+					}
 				
 					//Login check
 				
@@ -190,8 +198,46 @@ class Root
 								throw new Exception('Cette page est en accès limité, merci de vous connecter');
 						}
 					}
+					
+					elseif ($_GET['action'] == 'updatepview')
+					{
+						session_start();
+						if (isset($_SESSION['name']) && isset($_SESSION['id']))
+						{
+							if (isset($_GET['id']))
+							{
+								$controlb = new Controlback;
+								$UpdatePview = $controlb->updatePostView($_GET['id']);			
+							}
+							else{
+								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
+							}
+						}
+						else{
+								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+						}
+					}
 
 					//Delete Posts
+					
+					elseif ($_GET['action'] == 'deletepconf')
+					{
+						session_start();
+						if (isset($_SESSION['name']) && isset($_SESSION['id']))
+						{
+							if (isset($_GET['id']))
+							{
+								$controlb = new Controlback;
+								$Deleteconf = $controlb->deletePostconf($_GET['id']);
+							}
+							else{
+								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
+							}
+						}
+						else{
+								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+						}
+					}
 
 					elseif ($_GET['action'] == 'deletep')
 					{

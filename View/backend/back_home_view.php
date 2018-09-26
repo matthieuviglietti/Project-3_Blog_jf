@@ -22,25 +22,25 @@
 	
 	<nav id="nav">
 		<ul>
-			<li><a id="current" href="backend_view.php">Publier un épisode</a></li>
-			<li><a href="root.php?action=listp">Épisodes</a></li>
-			<li><a href="root.php?action=alertcb">Commentaires signalés</a></li>
-			<li><a href="logout_view.php">Se déconnecter</a></li>
+			<li><a id="current" href="index.php?action=board">Publier un épisode</a></li>
+			<li><a href="index.php?action=listp">Épisodes</a></li>
+			<li><a href="index.php?action=alertcb">Commentaires signalés</a></li>
+			<li><a href="index.php?action=logout">Se déconnecter</a></li>
 		</ul>
 	</nav>
 	</header>
 	
 	<aside><h3>Publier un nouvel épisode</h3></aside>
 	
-	<form method="post" action="../../root.php?action=createp">
-		<label id="title" for='title'>Titre de l'épisode : </label><br/>
+	<form method="post" action="index.php?action=createp">
+		<label  for='title'>Titre de l'épisode : </label><br/>
 		<input name="title" type="text"/>
 		<br/>
-		<label id="title" for='title'>Auteur : </label><br/>
+		<label for='author'>Auteur : </label><br/>
 		<input name="author" type="text" value="Jean Forteroche"/>
 		<br/>
 		<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'></textarea>
-		<input id="pcancel" type="cancel" value="Annuler"/>
+		<a href="index.php?action=board" id="pcancel" type="cancel">Annuler</a>
 		<input id="psubmit" type="submit" value="Diffuser l'épisode"/>		
 	</form>
 	

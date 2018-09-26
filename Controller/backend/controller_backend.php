@@ -6,6 +6,12 @@ require_once('Model/AdminManager.php');
 
 class Controlback
 {
+	
+	public function LoginView()
+	{
+		require('View/login_view.php');
+	}
+	
 	public function LogIn($name, $pass)
 	{
 		$adminmanager= new AdminManager;
@@ -18,7 +24,7 @@ class Controlback
 				session_start();
 				$_SESSION['id'] = $resultat['id'];
 				$_SESSION['name'] = $name;
-				header('Location: root.php?action=logged');
+				header('Location: index.php?action=logged');
 		}
 		
 		else{
@@ -29,7 +35,7 @@ class Controlback
 	
 	public function Logged()
 	{
-		header('Location: root.php?action=board');
+		header('Location: index.php?action=board');
 	}
 	
 	public function Board()
@@ -59,7 +65,20 @@ class Controlback
 		$postmanager = new PostManager;
 		$updatepost = $postmanager->updatePost($title, $content, $postid);
 		
-		require('View/frontend/update_back_view.php');
+		header('Location: index.php?action=listp');
+	}
+	
+	public function updatePostView($postid)
+	{
+		$postmanager = new PostManager;
+		$updatepostview = $postmanager->updatePostview($postid);
+		
+		require('View/backend/update_back_view.php');
+	}
+	
+	public function deletePostconf($postid)
+	{
+		require('View/backend/conf_back_delete_post_view.php');
 	}
 	
 	public function DeletePost($postid)
@@ -67,7 +86,7 @@ class Controlback
 		$postmanager = new PostManager;
 		$updatepost = $postmanager->deletePost($postid);
 		
-		require('View/frontend/back_home_view.php');
+		header('Location: index.php?action=listp');
 	}
 		
 	//For CommentManager

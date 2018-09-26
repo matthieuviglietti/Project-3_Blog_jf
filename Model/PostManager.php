@@ -42,7 +42,7 @@ class PostManager extends Manager
 	public function getPost($postid)
 	{
 		$db = $this->dbConnect();
-		$get = $db->prepare('SELECT id, title, author, content, post_date FROM posts WHERE id = ?');
+		$get = $db->prepare('SELECT id, title, author, content, post_date FROM posts WHERE id= ?');
 		$get->execute(array($postid));
 		$getpost = $get->fetch();
 		
@@ -52,8 +52,17 @@ class PostManager extends Manager
 	public function updatePost($title, $content, $postid)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('UPDATE posts SET title = ?, content = ?, post_date = NOW() WHERE id = ?');
+		$req = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id= ?');
 		$req->execute(array($title, $content, $postid));
+		
+		return $req;
+	}
+	
+	public function updatePostview($postid)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT id, title, author, content FROM posts WHERE id= ?');
+		$req->execute(array($postid));
 		
 		return $req;
 	}
