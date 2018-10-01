@@ -50,7 +50,15 @@
 	
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	
-	
+	<script type="text/javascript" id="cookiebanner"
+ 	src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"
+	data-height="60px"
+	data-bg="#59767F"
+	data-message="Pour un fonctionnement optimal notre site utilise des cookies. En continuant la navigation vous accepter l'utilisation de ceux-ci."
+	data-linkmsg="En savoir plus"
+	data-expires="31536000"
+	data-moreinfo="https://www.cnil.fr/fr/cookies-traceurs-que-dit-la-loi">
+	</script>
 	
 </body>
 </html>	

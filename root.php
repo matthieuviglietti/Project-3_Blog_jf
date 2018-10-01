@@ -269,6 +269,50 @@ class Root
 							throw new Exception('La création du commentaire a échouée');
 						}
 					}
+					
+					//backend update comment with delete phrase
+					
+					elseif ($_GET['action'] == 'deletec')
+					{
+						session_start();
+						if (isset($_SESSION['name']) && isset($_SESSION['id']))
+						{
+							if (isset($_GET['commentid']))
+							{
+								$controlb = new Controlback;
+								$DeleteC = $controlb->Updatecomment($_GET['commentid']);
+							}
+							else{
+								throw new Exception('L\'identifiant du commentaire est introuvable');
+							}
+						}
+						else{
+								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+						}
+					}
+					
+					//backend Validate comment alert
+					
+					elseif ($_GET['action'] == 'validatec')
+					{
+						session_start();
+						if (isset($_SESSION['name']) && isset($_SESSION['id']))
+						{
+							if (isset($_GET['commentid']))
+							{
+								$controlb = new Controlback;
+								$DeleteC = $controlb->Validatecomment($_GET['commentid']);
+							}
+							else{
+								throw new Exception('L\'identifiant du commentaire est introuvable');
+							}
+						}
+						else{
+								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+						}
+					}
+					
+					
 				}
 				else{
 					$controlf =new Controlfront;

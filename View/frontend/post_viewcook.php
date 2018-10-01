@@ -42,7 +42,7 @@
 		<div id="free">
 			<div id="comments">
 					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
-						<label name='author'>Votre nom:</label> <input type="text" name="author"/><br/>
+						<label name='author'>Votre nom:</label> <input type="text" name="author" value="<?=$_COOKIE['pseudo']?>"/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
 						<input type="submit" name="submit" value="Envoyer"/>
 					</form>

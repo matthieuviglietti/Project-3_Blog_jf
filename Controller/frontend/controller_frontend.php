@@ -23,7 +23,15 @@ class Controlfront
 		$post = $postmanager->getPost($postid);
 		$getcomment = $commentmanager->getComments($postid); //getcomment for one post
 		
-		require('View/frontend/post_view.php');
+		if(isset($_COOKIE['pseudo']))
+		{
+			require('View/frontend/post_viewcook.php');
+		}
+		
+		else{
+			require('View/frontend/post_view.php');
+		}
+		
 	}
 	
 

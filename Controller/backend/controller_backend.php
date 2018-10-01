@@ -118,9 +118,17 @@ class Controlback
 	public function Updatecomment($commentid)
 	{
 		$commentmanager = new CommentManager;
-		$UpdateComment = $commentmanager->updateComment();
+		$UpdateComment = $commentmanager->updateComment($commentid);
 		
-		require('Location: update_back_view.php');
+		header('Location: index.php?action=alertcb');
+	}
+	
+	public function Validatecomment($commentid)
+	{
+		$commentmanager = new CommentManager;
+		$UpdateComment = $commentmanager->validateComment($commentid);
+		
+		header('Location: index.php?action=alertcb');
 	}
 	
 	public function Deletecomment($commentid)

@@ -112,6 +112,18 @@ h2{
 	transition-duration: 0.6s;
 }
 
+/*Search bar
+#search{
+    width:500px;
+    margin:0 auto;
+}
+.search { 
+    padding:6px 15px 6px 30px;
+    margin:3px; 
+	border:1px solid grey;
+	border-radius:15px; 
+}*/
+
 #container{
 	display: flex;
 	flex-wrap: nowrap;

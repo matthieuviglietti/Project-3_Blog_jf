@@ -22,29 +22,37 @@
 	
 	<nav id="nav">
 		<ul>
-			<li><a href="root.php?action=board">Publier un épisode</a></li>
-			<li><a href="root.php?action=listp">Épisodes</a></li>
-			<li><a id="current" href="root.php?action=alertcb">Commentaires signalés</a></li>
-			<li><a href="logout_view.php">Se déconnecter</a></li>
+			<li><a href="index.php?action=board">Publier un épisode</a></li>
+			<li><a href="index.php?action=listp">Épisodes</a></li>
+			<li><a id="current" href="index.php?action=alertcb">Commentaires signalés</a></li>
+			<li><a href="index.php?action=logout.php">Se déconnecter</a></li>
 		</ul>
 	</nav>
 	</header>
 	
-	<h3>Liste des commentaires signalés par les lecteurs</h3>
-	<?php
+	<h3>Liste des commentaires signalés</h3>
 	
-	while ($alert = $alertlist->fetch())
-	{
-		echo 'Auteur : '.$alert['author'].'<br/>
-			  Date du commentaire : '.$alert['comment_date'].'<br/>
-			  Commentaire : '.$alert['comment'].'<br/>';
-	}
-		
-	
-	?>
-	
-	<a>Supprimer le commentaire</a>
-	<a>Modérer le commentaire</a>
+	<section id="containcomments">
+		<article id="alertc">
+			<?php
+
+			while ($alert = $alertlist->fetch())
+			{
+			?>
+				<p><strong>Auteur :</strong> <?= htmlspecialchars($alert['author'])?></p>
+				<p><strong>Date du commentaire :</strong> <?= htmlspecialchars($alert['comment_date'])?></p>
+				<p><strong>Commentaire :</strong> <?= nl2br($alert['comment'])?></p>
+			
+		</article>
+
+				<aside class="buttonc">
+					<a class="suppr" href="index.php?action=deletec&amp;commentid=<?=$alert['id']?>">Supprimer</a>
+					<a class="update" href="index.php?action=validatec&amp;commentid=<?=$alert['id']?>">Valider</a>	
+				</aside>
+			<?php
+			}
+			?>
+	</section>
 	
 	
 </body>
