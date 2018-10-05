@@ -32,27 +32,29 @@
 	
 	<h3>Liste des commentaires signalés</h3>
 	
-	<section id="containcomments">
-		<article id="alertc">
-			<?php
-
-			while ($alert = $alertlist->fetch())
-			{
-			?>
-				<p><strong>Auteur :</strong> <?= htmlspecialchars($alert['author'])?></p>
-				<p><strong>Date du commentaire :</strong> <?= htmlspecialchars($alert['comment_date'])?></p>
-				<p><strong>Commentaire :</strong> <?= nl2br($alert['comment'])?></p>
 			
-		</article>
+				<?php
 
-				<aside class="buttonc">
-					<a class="suppr" href="index.php?action=deletec&amp;commentid=<?=$alert['id']?>">Supprimer</a>
-					<a class="update" href="index.php?action=validatec&amp;commentid=<?=$alert['id']?>">Valider</a>	
-				</aside>
-			<?php
-			}
-			?>
-	</section>
+				while ($alert = $alertlist->fetch())
+				{
+				?>
+					<section id="containcomments">
+						<article id="alertc">
+							<aside id="info">
+								<p><strong>Auteur :</strong> <?= htmlspecialchars($alert['author'])?></p>
+								<p><strong>Date du commentaire :</strong> <?= htmlspecialchars($alert['comment_date'])?></p>
+								<p><strong>Commentaire :</strong> <?= nl2br($alert['comment'])?></p>
+							</aside>
+							<aside class="buttonc">
+								<a class="suppr" href="index.php?action=deletec&amp;commentid=<?=$alert['id']?>">Supprimer</a>
+								<a class="update" href="index.php?action=validatec&amp;commentid=<?=$alert['id']?>">Valider</a>	
+							</aside>
+						</article>
+					</section>
+				<?php
+				}
+				?>
+			
 	
 	
 </body>

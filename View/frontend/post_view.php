@@ -55,13 +55,28 @@
 			<section id="backcomments">
 				<aside id="separatecomments">
 					<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
-					<p><?= nl2br($comment['comment'])?></p>
+					<p><?= htmlspecialchars(nl2br($comment['comment']))?></p>
 				</aside>
+				<a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
+—
+				<a href="?page=<?php echo $page + 1; ?>">Page suivante</a>
 			</section>
 			<?php
 			}
 			?>
+		
 		</div>
+	
+		<?php
+			while ($pagination = $getpagination->fetch())
+			{
+			?>
+				<a href="?page=<?php echo $currentpage - 1; ?>">Page précédente</a>
+—
+				<a href="?page=<?php echo $currentpage + 1; ?>">Page suivante</a>
+			<?php
+			}
+			?>
 	
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	

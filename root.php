@@ -23,10 +23,16 @@ class Root
 						session_start();
 							if (isset($_SESSION['name']) && isset($_SESSION['id']))
 							{
-								if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']))
+								if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']) && isset($_POST['chapter']))
 								{
-									$controlb = new Controlback;
-									$CreateP = $controlb->CreatePost($_POST['title'], $_POST['author'], $_POST['content']);
+									if(ctype_digit($_POST['chapter']))
+									{
+										$controlb = new Controlback;
+										$CreateP = $controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content']);
+									}
+									else{
+										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
+									}	
 								}
 								else{
 									throw new Exception('L\'épisode n\'a pas pu être enregistré');
@@ -44,8 +50,16 @@ class Root
 					
 					elseif ($_GET['action'] == 'gotologin')
 					{
-						$controlb = new Controlback;
-						$loginview = $controlb->LoginView();
+						session_start();
+						if (isset($_SESSION['name']) && isset($_SESSION['id']))
+						{
+							$controlb = new Controlback;
+							$CreateP = $controlb->Board();
+						}
+						else{
+							$controlb = new Controlback;
+							$controlb->LoginView();
+						}
 					}
 				
 					//Login check
@@ -76,7 +90,13 @@ class Root
 							throw new Exception('Cette page est en accès limité, merci de vous connecter');
 						}
 					}
-				
+					
+					elseif ($_GET['action'] == 'logout')
+					{
+						$controlb = new Controlback;
+						$logout = $controlb->LogOut();
+					}
+					
 					elseif ($_GET['action'] == 'board')
 					{
 						session_start();
@@ -140,8 +160,23 @@ class Root
 					{
 							if (isset($_GET['id']))
 							{
-								$controlf = new Controlfront;
-								$PostAndComments = $controlf->Post($_GET['id']);	
+								if (isset($_GET['page']) && !empty($_GET['page']))
+								{
+									$page = intval($_GET['page']);
+									$currentpage = $_GET['page'];
+									$limit=10;
+									$start = ($currentpage - 1) * $limit;
+									$controlf = new Controlfront;
+									$PostAndComments = $controlf->Post($_GET['id'], $start, $currentpage, $limit);
+								}
+								else{
+									$currentpage = 1;
+									$limit=10;
+									$start = ($currentpage - 1) * $limit;
+									$controlf = new Controlfront;
+									$PostAndComments = $controlf->Post($_GET['id'], $start, $currentpage, $limit);
+								}
+									
 							}
 
 							else{
@@ -185,10 +220,16 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-								if (isset($_POST['title']) && isset($_POST['content']) && isset($_GET['id']))
+								if (isset($_POST['title']) &&isset($_POST['chapter']) && isset($_POST['content']) && isset($_GET['id']))
 							{
-								$controlb = new Controlback;
-								$UpdateP = $controlb->updatePost($_POST['title'], $_POST['content'], $_GET['id']);			
+									if(ctype_digit($_POST['chapter']))
+									{
+										$controlb = new Controlback;
+										$UpdateP = $controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $_GET['id']);
+									}
+									else{
+										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
+									}		
 							}
 							else{
 								throw new Exception('La mise à jour du post a échouée, il manque soit le titre, soit le contenu, soit l\'identifiant du post');

@@ -38,17 +38,25 @@ class Controlback
 		header('Location: index.php?action=board');
 	}
 	
+	public function LogOut()
+	{
+		$adminmanager= new AdminManager;
+		$logout = $adminmanager->logOut();
+		
+		require('View/logout_view.php');
+	}
+	
 	public function Board()
 	{
 		require('View/backend/back_home_view.php');
 	}
 	
-	public function CreatePost($title, $author, $content)
+	public function CreatePost($title, $chapter, $author, $content)
 	{
 		$postmanager = new PostManager;
-		$createpost = $postmanager->createPost($title, $author, $content);
+		$createpost = $postmanager->createPost($title, $chapter, $author, $content);
 	
-		header('Location:');
+		header('Location: index.php?action=listp');
 	}
 		
 	public function ListPosts()
@@ -60,10 +68,10 @@ class Controlback
 	}
 	
 	
-	public function UpdatePost($title, $content, $postid)
+	public function UpdatePost($title, $chapter, $content, $postid)
 	{
 		$postmanager = new PostManager;
-		$updatepost = $postmanager->updatePost($title, $content, $postid);
+		$updatepost = $postmanager->updatePost($title, $chapter, $content, $postid);
 		
 		header('Location: index.php?action=listp');
 	}

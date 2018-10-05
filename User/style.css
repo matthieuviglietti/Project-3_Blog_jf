@@ -75,6 +75,7 @@ form, label{
 	color: black;
 }
 
+
 #psubmit{
 	font-family: 'kionaregular';
 	font-size: 1em;
@@ -202,14 +203,14 @@ nav ul{
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 10px;
-	justify-content: space-around;
+	justify-content: flex-start;
 	
 }
 #title{
 	background-color:#2B9EC5;
 	width: 24%;
 	height: 20vw;
-	margin-top: 20px;
+	margin: 10px 2px 0px 2px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -271,10 +272,7 @@ nav ul{
 
 #containcomments{
 	margin-left: 70px;
-	margin-top: 30px;
 	margin-right: 70px;
-	border: 1px solid black;
-	border-radius: 5px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -285,6 +283,15 @@ nav ul{
 
 #alertc p{
 	margin: 0;
+}
+
+#alertc{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 90%;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 

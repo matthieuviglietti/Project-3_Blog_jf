@@ -12,6 +12,14 @@ class AdminManager extends Manager
 		$resultat = $req->fetch();
 		
 		return $resultat;
-	}	
+	}
 	
+	public function logOut()
+	{
+	session_start();
+
+	$_SESSION = array();
+	session_destroy();
+	}
+
 }
