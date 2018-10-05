@@ -60,6 +60,11 @@ body{
 	margin: 0;
 }
 
+a{
+	text-decoration: none;
+	color: black;
+}
+
 #cancel{
 	text-decoration: none;
 	color: black;
@@ -216,4 +221,22 @@ form input{
 
 #label{
 	margin-left: 20px;
+}
+
+section{
+	font-family: 'kionaregular';
+	background-color : rgba(53, 74, 82, 0.7);
+	width: 300px;
+	height: 80px;
+	margin: auto;
+	padding:30px;
+	line-height: 80px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 7px 0px #354A52;
+	text-align: center;
+	color: white;
+}
+
+section p{
+	margin: 0;
 }

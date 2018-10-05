@@ -175,6 +175,7 @@ h4{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	overflow: hidden;
 }
 
 #read{

@@ -32,7 +32,7 @@
 	?>
 		
 			<section id="title">
-				<h4>" <?=$datapost['title']?> "</h4>
+				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
 				<aside class="button">
 					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=$datapost['id']?>">Supprimer</a>
 					<a class="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>

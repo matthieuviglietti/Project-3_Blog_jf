@@ -30,11 +30,14 @@
 	</nav>
 	</header>
 	
-	<aside><h3>Publier un nouvel épisode</h3></aside>
+	<h3>Publier un nouvel épisode</h3>
 	
 	<form method="post" action="index.php?action=createp">
 		<label  for='title'>Titre de l'épisode : </label><br/>
 		<input name="title" type="text"/>
+		<br/>
+		<label  for='chapter'>Épisode n°: </label><br/>
+		<input name="chapter" type="text"/>
 		<br/>
 		<label for='author'>Auteur : </label><br/>
 		<input name="author" type="text" value="Jean Forteroche"/>

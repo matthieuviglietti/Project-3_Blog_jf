@@ -11,8 +11,8 @@
 <title>Administration du blog</title>
 </head>
 
-<body>
-	
+<body>`
+
 	<header class="header">
 		<a href="index.php">
 			<div id="logo">
@@ -28,19 +28,19 @@
 	<?php
 	while ($datapost = $listposts->fetch())
 	{
+		$cut = substr($datapost['content'], 0, 500);
 	?>
 	
 	<div id="container">
 		<section id="title">
-			<h4>"<?= nl2br($datapost['title'])?>"</h4><br/>
+			<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> : <?= nl2br($datapost['title'])?>"</h4><br/>
 			<p class="book">Un billet simple pour l'Alaska</p>
 			<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date']?></p><br/>
 		</section>
 	
 		<article id="content">
-			<?=nl2br($datapost['content'])?>
-			<br/> 
-			<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> <br/>	
+			<p><?=$cut?>...</p>
+			<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
 		</article>
 	</div>
 	

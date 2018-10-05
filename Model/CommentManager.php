@@ -20,13 +20,24 @@ class CommentManager extends Manager
 		return $req;
 	}
 	
-	public function getComments($postid)
+	public function getComments($postid, $start, $limit)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT post_id, id, author, comment, comment_date FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT 0,5');
+		$req = $db->prepare('SELECT * FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT 0,5');
 		$req->execute(array($postid));
 		
 		return $req;
+	}
+	
+	public function getPagination($postid)
+	{
+		$db = $this->dbConnect();
+		$req=$db->query('SELECT COUNT(*) FROM comments WHERE postid= ?');
+		$req->execute(array($postid));
+		$total_comments = $q->fetch();
+		
+		
+		return $totalcomments;
 	}
 	
 	public function selectComment($commentid)
