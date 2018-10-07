@@ -112,17 +112,29 @@ h2{
 	transition-duration: 0.6s;
 }
 
-/*Search bar
-#search{
-    width:500px;
-    margin:0 auto;
+/*Search Bar*/
+
+button{
+	border-style: none;
+	width: 20px;
+	height: 20px;
+	background-image: url('images/magnifying-glass.png');
+	background-repeat: no-repeat;
 }
-.search { 
-    padding:6px 15px 6px 30px;
-    margin:3px; 
-	border:1px solid grey;
-	border-radius:15px; 
-}*/
+
+#containsearch{
+	display: flex;
+	align-items: center;
+	width: 20%;
+}
+
+.sb-search-input{
+	width: 150px;
+	height: 25px;
+
+}
+
+
 
 #container{
 	display: flex;

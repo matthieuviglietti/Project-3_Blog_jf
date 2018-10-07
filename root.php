@@ -155,28 +155,25 @@ class Root
 					}
 				
 					//Post and comments front
+					
+					elseif ($_GET['action'] == 'search')
+					{
+							if (isset($_GET['search']) && $_GET['search']!=NULL)
+							{
+								$controlf = new Controlfront;
+								$Search = $controlf->GetSearch($_GET['search']);
+							}
+							else{
+								throw new Exception('la recherche a échouée, Vous n\'avez pas spécifié de mot clé');
+							}
+					}
 				
 					elseif ($_GET['action'] == 'postfront')
 					{
 							if (isset($_GET['id']))
 							{
-								if (isset($_GET['page']) && !empty($_GET['page']))
-								{
-									$page = intval($_GET['page']);
-									$currentpage = $_GET['page'];
-									$limit=10;
-									$start = ($currentpage - 1) * $limit;
 									$controlf = new Controlfront;
-									$PostAndComments = $controlf->Post($_GET['id'], $start, $currentpage, $limit);
-								}
-								else{
-									$currentpage = 1;
-									$limit=10;
-									$start = ($currentpage - 1) * $limit;
-									$controlf = new Controlfront;
-									$PostAndComments = $controlf->Post($_GET['id'], $start, $currentpage, $limit);
-								}
-									
+									$PostAndComments = $controlf->Post($_GET['id']);
 							}
 
 							else{

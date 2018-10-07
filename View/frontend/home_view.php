@@ -11,7 +11,7 @@
 <title>Administration du blog</title>
 </head>
 
-<body>`
+<body>
 
 	<header class="header">
 		<a href="index.php">
@@ -21,7 +21,16 @@
 			</div>
 		</a>
 		
-		<a id="home" href="index.php">Accueil</a>
+		<div id="containsearch">
+			<a id="home" href="index.php">Accueil</a>
+			<div id="sb-search">
+				<form method="get" action="index.php">
+					<input type="hidden" name="action" value="search">
+					<input class="sb-search-input" placeholder="Rechercher un épisode..." type="search" name="search">
+					<button type="submit"><span class="sb-search-submit"></span></button>
+				</form>
+			</div>
+		</div>
 	
 	</header>
 	

@@ -68,15 +68,16 @@
 		</div>
 	
 		<?php
-			while ($pagination = $getpagination->fetch())
+		
+			echo 'Page : ';
+			for ($i = 1 ; $i <= $nombreDePages ; $i++)
 			{
-			?>
-				<a href="?page=<?php echo $currentpage - 1; ?>">Page précédente</a>
-—
-				<a href="?page=<?php echo $currentpage + 1; ?>">Page suivante</a>
-			<?php
+				echo '<a href="livreor.php?page=' . $i . '">' . $i . '</a> ';
 			}
-			?>
+		?>
+ 
+			
+	
 	
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	

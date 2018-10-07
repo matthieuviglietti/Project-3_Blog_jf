@@ -63,4 +63,13 @@ class PostManager extends Manager
 		
 		return $req;
 	}
+	
+	public function getSearch($keyword)
+	{
+		$db = $this->dbConnect();
+		$req = $db->query('SELECT id, title, chapter FROM posts WHERE title LIKE "%'.$keyword.'%" OR chapter LIKE "%'.$keyword.'%" OR content LIKE "%'.$keyword.'%"');
+		
+		return $req;
+		
+	}
 }

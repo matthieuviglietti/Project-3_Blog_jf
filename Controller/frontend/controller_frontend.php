@@ -16,24 +16,30 @@ class Controlfront
 		require('View/frontend/home_view.php');
 	}
 	
-	public function Post($postid, $currentpage, $start, $limit)
+	public function Post($postid)
 	{
 		$postmanager = new PostManager;
 		$commentmanager = new CommentManager;
 		$post = $postmanager->getPost($postid);
-		$getcomment = $commentmanager->getComments($postid, $start, $limit); //getcomment for one post
-		$getpagination = $commentmanager->getPagination($postid);
-		$pagenumbers  = ceil($totalcomments / $limit);
+		$getcomment = $commentmanager->getComments($postid); //getcomment for one post
 		
 		if(isset($_COOKIE['pseudo']))
 		{
-			require('View/frontend/post_viewcook.php&page='.$currentpage);
+			require('View/frontend/post_viewcook.php');
 		}
 		
 		else{
-			require('View/frontend/post_view.php&page='.$currentpage);
+			require('View/frontend/post_view.php');
 		}
 		
+	}
+	
+	public function GetSearch($keyword)
+	{
+		$postmanager = new PostManager;
+		$search = $postmanager->getSearch($keyword);
+		
+		require('View/frontend/search_view.php');
 	}
 	
 
