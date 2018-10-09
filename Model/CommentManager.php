@@ -23,7 +23,7 @@ class CommentManager extends Manager
 	public function getComments($postid, $start, $limit)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT id, post_id, author, comment, comment_date FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
+		$req = $db->prepare('SELECT id, post_id, author, comment, comment_date, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
 		$req->execute(array($postid));
 		
 		return $req;
@@ -66,15 +66,6 @@ public function getPagination($postid)
 		return $req;
 	}
 		
-	/*public function deleteCommment($commentid)
-	{
-		$db = $this->dbConnect();
-		$req = $db->prepare('DELETE FROM comments WHERE id= ?');
-		$req->execute(array($commentid));
-		
-		return $req;
-	}
-	*/
 	
 	public function alertComment($commentid)
 	{
@@ -84,6 +75,7 @@ public function getPagination($postid)
 		
 		return $req;
 	}
+	
 	
 	public function alertList()
 	{

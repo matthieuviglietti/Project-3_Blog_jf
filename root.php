@@ -39,16 +39,16 @@ class Root
 										$CreateP = $this->_controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content']);
 									}
 									else{
-										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
+										throw new Exception('<div class="exception">La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier</div>');
 									}	
 								}
 								else{
-									throw new Exception('L\'épisode n\'a pas pu être enregistré');
+									throw new Exception('<div class="exception">L\'épisode n\'a pas pu être enregistré</div>');
 								}
 							}
 						
 							else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br><a href="index.php?action=gotologin">Se connecter</a></div>');
 							}
 						
 		
@@ -78,7 +78,7 @@ class Root
 						}
 						
 						else{
-							throw new Exception('Il manque le login ou le mot de passe');
+							throw new Exception('<div class="exception">Il manque le login ou le mot de passe</div>');
 						}
 					}
 				
@@ -91,7 +91,7 @@ class Root
 						}
 						
 						else{
-							throw new Exception('Cette page est en accès limité, merci de vous connecter');
+							throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 					
@@ -108,7 +108,7 @@ class Root
 									$CreateP = $this->_controlb->Board();
 							}
 							else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 							}
 					}
 					
@@ -122,7 +122,7 @@ class Root
 							$ListP = $this->_controlb->ListPosts();
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 				
@@ -143,12 +143,12 @@ class Root
 										$PostAndComments = $this->_controlb->Post($_GET['id']);	
 								}
 								else{
-								throw new Exception('l\'id du post n\'est pas trouvable');
+								throw new Exception('<div class="exception">l\'id du post n\'est pas trouvable</div>');
 								}
 								
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 							
 					}
@@ -164,7 +164,7 @@ class Root
 								$Search = $this->_controlf->GetSearch($_GET['search']);
 							}
 							else{
-								throw new Exception('la recherche a échouée, Vous n\'avez pas spécifié de mot clé');
+								throw new Exception('<div class="exception">la recherche a échouée, Vous n\'avez pas spécifié de mot clé</div>');
 							}
 					}
 				
@@ -189,7 +189,7 @@ class Root
 							}
 
 							else{
-								throw new Exception('l\'id du post n\'est pas trouvable');
+								throw new Exception('<div class="exception">l\'id du post n\'est pas trouvable</div>');
 							}
 					}
 				
@@ -202,7 +202,7 @@ class Root
 							}
 
 							else{
-								throw new Exception('le commentaire n\'a pas pu etre identifié');
+								throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
 							}
 					}
 				
@@ -215,7 +215,7 @@ class Root
 							$AlertComments = $this->_controlb->AlertList();	
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 				
@@ -234,15 +234,15 @@ class Root
 										$UpdateP = $this->_controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $_GET['id']);
 									}
 									else{
-										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
+										throw new Exception('<div class="exception">La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier</div>');
 									}		
 							}
 							else{
-								throw new Exception('La mise à jour du post a échouée, il manque soit le titre, soit le contenu, soit l\'identifiant du post');
+								throw new Exception('<div class="exception">La mise à jour du post a échouée, il manque soit le titre, soit le contenu, soit l\'identifiant du post</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 					
@@ -256,11 +256,11 @@ class Root
 								$UpdatePview = $this->_controlb->updatePostView($_GET['id']);			
 							}
 							else{
-								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
+								throw new Exception('<div class="exception">L\'affichage du post a échoué il manque son identifiant</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 
@@ -276,11 +276,11 @@ class Root
 								$Deleteconf = $this->_controlb->deletePostconf($_GET['id']);
 							}
 							else{
-								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
+								throw new Exception('<div class="exception">L\'affichage du post a échoué il manque son identifiant</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 
@@ -294,11 +294,11 @@ class Root
 								$DeleteP = $this->_controlb->deletePost($_GET['id']);
 							}
 							else{
-								throw new Exception('L\'identifiant du post est introuvable');
+								throw new Exception('<div class="exception">L\'identifiant du post est introuvable</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 
@@ -306,10 +306,16 @@ class Root
 					{
 						if (isset($_GET['id']) && isset($_POST['author']) && isset($_POST['comment'])) 
 						{
+							if ($_POST['comment'] != NULL)
+							{
 								$CreateC = $this->_controlf-> CreateComment($_GET['id'], $_POST['author'], $_POST['comment']);
+							}
+							else{
+								throw new Exception('<div class="exception">Le commentaire est vide</div>');
+							}
 						}
 						else{
-							throw new Exception('La création du commentaire a échouée');
+							throw new Exception('<div class="exception">La création du commentaire a échouée</div>');
 						}
 					}
 					
@@ -325,11 +331,11 @@ class Root
 								$DeleteC = $this->_controlb->Updatecomment($_GET['commentid']);
 							}
 							else{
-								throw new Exception('L\'identifiant du commentaire est introuvable');
+								throw new Exception('<div class="exception">L\'identifiant du commentaire est introuvable</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 					
@@ -345,11 +351,11 @@ class Root
 								$DeleteC = $this->_controlb->Validatecomment($_GET['commentid']);
 							}
 							else{
-								throw new Exception('L\'identifiant du commentaire est introuvable');
+								throw new Exception('<div class="exception">L\'identifiant du commentaire est introuvable</div>');
 							}
 						}
 						else{
-								throw new Exception('Cette page est en accès limité, merci de vous connecter');
+								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
 					

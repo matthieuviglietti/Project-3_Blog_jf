@@ -7,7 +7,7 @@
 <script>tinymce.init({selector:'textarea',
 					  language_url : '../../User/Language/fr_FR.js',
 					  branding : false,});</script>
-<title>Administration du blog</title>
+<title>Accueil bog Jean Forteroche</title>
 </head>
 
 <body>
@@ -23,10 +23,10 @@
 		<div id="containsearch">
 			<a id="home" href="index.php">Accueil</a>
 			<div id="sb-search">
-				<form method="get" action="index.php">
+				<form id="searchform" method="get" action="index.php">
 					<input type="hidden" name="action" value="search">
-					<input class="sb-search-input" placeholder="Rechercher un épisode..." type="search" name="search">
 					<button type="submit"><span class="sb-search-submit"></span></button>
+					<input class="sb-search-input" placeholder="Rechercher un épisode..." type="search" name="search">
 				</form>
 			</div>
 		</div>
@@ -45,13 +45,27 @@
 			<p class="book">Un billet simple pour l'Alaska</p>
 			<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date']?></p><br/>
 		</section>
-	
-		<article id="content">
-			<?=$cut.'...</p>'?>
-			<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
-		</article>
+	<?php	
+		if (strlen($datapost['content'] < 500))
+		{
+			?>
+			<article id="content">
+				<?=$cut.'...</p>'?>
+				<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
+			</article>
+		<?php
+		}
+		else{
+			?>
+			<article id="content">
+				<?=$cut?>
+				<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
+			</article>
+		<?php
+		}
+		?>
 	</div>
-	
+		
 	<?php
 	}
 	?>
