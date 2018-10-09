@@ -17,15 +17,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'kionaitalic';
-    src: url('font/kiona-itallic-webfont.woff2') format('woff2'),
-         url('font/kiona-itallic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 
 @font-face {
     font-family: 'kionaregular';
@@ -54,6 +45,44 @@
 
 }
 
+
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('font/opensans-bold-webfont.woff2') format('woff2'),
+         url('font/opensans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('font/opensans-regular-webfont.woff2') format('woff2'),
+         url('font/opensans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('font/opensans-semibold-webfont.woff2') format('woff2'),
+         url('font/opensans-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'open_sansitalic';
+    src: url('font/opensans-italic-webfont.woff2') format('woff2'),
+         url('font/opensans-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 * {-moz-box-sizing: border-box; box-sizing: border-box;}
 
 body{
@@ -66,6 +95,11 @@ body{
 a{
 	text-decoration: none;
 	color: black;
+}
+
+p {
+	margin: 0; 
+	padding: 0;
 }
 
 header{
@@ -134,14 +168,18 @@ button{
 
 }
 
-
-
 #container{
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-around;
 	height: 45vw;
 	margin-bottom: 10px;
+}
+
+blockquote{
+	margin: 0;
+	padding: 0;
+	font-family: 'open_sansitalic';
 }
 
 h4{
@@ -182,13 +220,23 @@ h4{
 	padding: 20px;
 	/*background-image: url(images/fond-texte.png);
 	background-repeat: no-repeat;*/
-	font-family:'Kionaregular';
+	font-family:'open_sansregular';
 	text-align: justify;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	overflow: hidden;
 }
+
+#content span, #content div, #content p{
+	font-family:'open_sansregular';
+}
+
+#postview span{
+	font-family: 'open_sansitalic';
+	font-size: 0.6em;
+}
+
 
 #read{
 	font-family: 'kionaregular';
@@ -241,7 +289,7 @@ footer a{
 	width: 960px;
 	display: block;
 	margin: auto;
-	box-shadow: 0px 0px 40px 0px #D1E8F0;
+	box-shadow: 2px 2px 20px 0px #59767F;
 	padding: 20px;
 	background-color: white;
 }
@@ -257,7 +305,7 @@ h5{
 }
 
 #contentpost{
-	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-family: "open_sansregular","Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
 }
 
 .margintitle{
@@ -287,6 +335,20 @@ h6{
 	width: 35em;
 }
 
+#flex{
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 10px;
+}
+#submitc{
+	font-family: 'Kionaregular';
+	background-color: #B29D78;
+	height: 40px;
+	width: 70px;
+	color: white;
+	font-weight: bold;
+}
+
 .brown{
 	color: #B29D78;
 }
@@ -298,6 +360,8 @@ h6{
 #backcomments{
 	background-color: white;
 	padding: 10px;
+	font-family: 'open_sansregular';
+	font-size: 0.9em;
 }
 
 aside p{
@@ -313,3 +377,16 @@ aside p{
 	width: 100px;
 }
 
+label{
+	font-family: 'Kionaregular';
+	font-size: 0.9em;
+}
+
+#pagination{
+	font-family: 'Kionaregular';
+	text-align: right;
+}
+
+#pagination a{
+	font-weight: normal;
+}

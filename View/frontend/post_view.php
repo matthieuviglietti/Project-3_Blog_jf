@@ -22,7 +22,16 @@
 			</div>
 		</a>
 		
-		<a id="home" href="index.php">Accueil</a>
+		<div id="containsearch">
+			<a id="home" href="index.php">Accueil</a>
+			<div id="sb-search">
+				<form method="get" action="index.php">
+					<input type="hidden" name="action" value="search">
+					<input class="sb-search-input" placeholder="Rechercher un épisode..." type="search" name="search">
+					<button type="submit"><span class="sb-search-submit"></span></button>
+				</form>
+			</div>
+		</div>
 	
 	</header>
 	
@@ -32,11 +41,10 @@
 	
 	
 		<div id="postview">
-			<p>Publié par <?=$post['author']?> le <?=$post['post_date']?></p>
+			<span>Publié par <?=$post['author']?> le <?=$post['post_date']?></span> </br>
 
 			<article id='contentpost'><?=$post['content']?></article>
 		</div>
-	
 	
 		<h6>Lire et réagir</h6>
 		<div id="free">
@@ -44,11 +52,16 @@
 					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
 						<label name='author'>Votre nom:</label> <input type="text" name="author"/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
-						<input type="submit" name="submit" value="Envoyer"/>
+						<input class="sendcomment" type="submit" name="submit" value="Envoyer"/>
 					</form>
 			</div>
-
+		
 		<?php
+	
+			if ($getcomment->rowCount()==0)
+			{
+				echo "Il n'y a pas encore de commentaire";
+			}
 			while ($comment = $getcomment->fetch())
 			{
 			?>
@@ -57,28 +70,15 @@
 					<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
 					<p><?= htmlspecialchars(nl2br($comment['comment']))?></p>
 				</aside>
-				<a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
-—
-				<a href="?page=<?php echo $page + 1; ?>">Page suivante</a>
 			</section>
 			<?php
 			}
 			?>
-		
 		</div>
 	
-		<?php
+
 		
-			echo 'Page : ';
-			for ($i = 1 ; $i <= $nombreDePages ; $i++)
-			{
-				echo '<a href="livreor.php?page=' . $i . '">' . $i . '</a> ';
-			}
-		?>
- 
-			
-	
-	
+
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	
     </body>

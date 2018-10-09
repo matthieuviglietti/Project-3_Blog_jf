@@ -8,7 +8,8 @@
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
 					  width : 790,
-					  height: 600});</script>
+					  height: 600,
+					  content_css:'User/content.css'});</script>
 <title>Administration du blog</title>
 </head>
 
@@ -40,6 +41,9 @@
 		<form method="post" action="index.php?action=updatep&amp;id=<?=$data['id']?>">
 			<label id="titleform" for='title'>Titre de l'épisode : </label><br/>
 			<input name="title" type="text" Value="<?=$data['title']?>"/>
+			<br/>
+			<label  for='chapter'>Épisode n°: </label><br/>
+			<input name="chapter" type="text"/>
 			<br/>
 			<label id="auhorform" for='author'>Auteur : </label><br/>
 			<input name="author" type="text" value="<?=$data['author']?>"/>

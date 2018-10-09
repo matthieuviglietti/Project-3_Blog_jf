@@ -8,7 +8,10 @@
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
 					  width : 790,
-					  height: 600});</script>
+					  height: 600,
+					  content_css:'User/content.css',
+					  plugins: "fullpage",
+					  fullpage_default_font_family: "''open_sansregular'"});</script>
 <title>Administration du blog</title>
 </head>
 

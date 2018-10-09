@@ -18,7 +18,7 @@
 			<li><a href="index.php?action=board">Publier un épisode</a></li>
 			<li><a id="current"href="index.php?action=listp">Épisodes</a></li>
 			<li><a href="index.php?action=alertcb">Commentaires signalés</a></li>
-			<li><a href="index.php?action=logout.php">Se déconnecter</a></li>
+			<li><a href="index.php?action=logout">Se déconnecter</a></li>
 		</ul>
 	</nav>
 	</header>

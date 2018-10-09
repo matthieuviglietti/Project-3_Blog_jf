@@ -22,7 +22,16 @@
 			</div>
 		</a>
 		
-		<a id="home" href="index.php">Accueil</a>
+		<div id="containsearch">
+			<a id="home" href="index.php">Accueil</a>
+			<div id="sb-search">
+				<form method="get" action="index.php">
+					<input type="hidden" name="action" value="search">
+					<input class="sb-search-input" placeholder="Rechercher un épisode..." type="search" name="search">
+					<button type="submit"><span class="sb-search-submit"></span></button>
+				</form>
+			</div>
+		</div>
 	
 	</header>
 	
@@ -39,16 +48,39 @@
 	
 	
 		<h6>Lire et réagir</h6>
-		<div id="free">
+	
+		<?php
+			if (isset ($_COOKIE['pseudo']))
+			{
+			?>
+				<div id="free">
 			<div id="comments">
 					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
-						<label name='author'>Votre nom:</label> <input type="text" name="author" value="<?=$_COOKIE['pseudo']?>"/><br/>
+						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value="<?=$_COOKIE['pseudo']?>"/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
-						<input type="submit" name="submit" value="Envoyer"/>
+						<div id="flex">
+							<input id="submitc" type="submit" name="submit" value="Envoyer"/>
+						</div>
 					</form>
 			</div>
+			<?php
+			}
+			else{
+				?>
+				<div id="free">
+			<div id="comments">
+					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
+						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value=""/><br/>
+						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
+						<div id="flex">
+							<input id="submitc" type="submit" name="submit" value="Envoyer"/>
+						</div>
+					</form>
+			</div>
+			<?php
+			}
 
-		<?php
+		
 			while ($comment = $getcomment->fetch())
 			{
 			?>
@@ -61,7 +93,30 @@
 			<?php
 			}
 			?>
+			
+			<p id="pagination">
+				<?php
+
+				echo 'Page : ';
+
+				for ($i = 1 ; $i <= $totalpagecomments ; $i++)
+				{
+					if ($i == $page)
+					{
+						echo '<strong class="brown">' . $i . '<strong></a> ';
+					}
+					else
+					{
+						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.$post['id'].'">' . $i . '</a> ';
+					}
+					
+				}
+				?>
+			</p>
 		</div>
+	
+		
+ 	
 	
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	

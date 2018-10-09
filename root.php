@@ -5,6 +5,15 @@ require_once('Controller/backend/controller_backend.php');
 
 class Root
 {
+	
+	private $_controlb;
+	private $_controlf;
+	
+	public function __construct(){
+		$this->_controlb = new Controlback();
+		$this->_controlf = new Controlfront();
+	}
+	
 	public function selectRoot()
 	{
 			try
@@ -27,8 +36,7 @@ class Root
 								{
 									if(ctype_digit($_POST['chapter']))
 									{
-										$controlb = new Controlback;
-										$CreateP = $controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content']);
+										$CreateP = $this->_controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content']);
 									}
 									else{
 										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
@@ -53,12 +61,10 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-							$controlb = new Controlback;
-							$CreateP = $controlb->Board();
+							$CreateP = $this->_controlb->Board();
 						}
 						else{
-							$controlb = new Controlback;
-							$controlb->LoginView();
+							$this->_controlb->LoginView();
 						}
 					}
 				
@@ -68,8 +74,7 @@ class Root
 					{
 						if (isset($_POST['pass']) && isset($_POST['name']))
 						{
-							$controlb = new Controlback;
-							$controlb->LogIn($_POST['name'], $_POST['pass']);
+							$this->_controlb->LogIn($_POST['name'], $_POST['pass']);
 						}
 						
 						else{
@@ -82,8 +87,7 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-							$controlb = new Controlback;
-							$logged = $controlb->Logged();
+							$logged = $this->_controlb->Logged();
 						}
 						
 						else{
@@ -93,8 +97,7 @@ class Root
 					
 					elseif ($_GET['action'] == 'logout')
 					{
-						$controlb = new Controlback;
-						$logout = $controlb->LogOut();
+						$logout = $this->_controlb->LogOut();
 					}
 					
 					elseif ($_GET['action'] == 'board')
@@ -102,8 +105,7 @@ class Root
 						session_start();
 							if (isset($_SESSION['name']) && isset($_SESSION['id']))
 							{
-									$controlb = new Controlback;
-									$CreateP = $controlb->Board();
+									$CreateP = $this->_controlb->Board();
 							}
 							else{
 								throw new Exception('Cette page est en accès limité, merci de vous connecter');
@@ -117,8 +119,7 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-							$controlb = new Controlback;
-							$ListP = $controlb->ListPosts();
+							$ListP = $this->_controlb->ListPosts();
 						}
 						else{
 								throw new Exception('Cette page est en accès limité, merci de vous connecter');
@@ -129,8 +130,7 @@ class Root
 				
 					elseif ($_GET['action'] == 'listpfront')
 					{
-							$controlf = new Controlfront;
-							$ListP = $controlf->ListPosts();
+							$ListP = $this->_controlf->ListPosts();
 					}
 
 					elseif ($_GET['action'] == 'post')
@@ -139,20 +139,21 @@ class Root
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
 								if (isset($_GET['postid']))
-							{
-								$controlb = new Controlback;
-								$PostAndComments = $controlb->Post($_GET['id']);	
-							}
-
-							else{
+								{
+										$PostAndComments = $this->_controlb->Post($_GET['id']);	
+								}
+								else{
 								throw new Exception('l\'id du post n\'est pas trouvable');
-							}
+								}
+								
 						}
 						else{
 								throw new Exception('Cette page est en accès limité, merci de vous connecter');
 						}
-						
+							
 					}
+						
+					
 				
 					//Post and comments front
 					
@@ -160,8 +161,7 @@ class Root
 					{
 							if (isset($_GET['search']) && $_GET['search']!=NULL)
 							{
-								$controlf = new Controlfront;
-								$Search = $controlf->GetSearch($_GET['search']);
+								$Search = $this->_controlf->GetSearch($_GET['search']);
 							}
 							else{
 								throw new Exception('la recherche a échouée, Vous n\'avez pas spécifié de mot clé');
@@ -172,8 +172,20 @@ class Root
 					{
 							if (isset($_GET['id']))
 							{
-									$controlf = new Controlfront;
-									$PostAndComments = $controlf->Post($_GET['id']);
+								if(isset($_GET['page']) && intval($_GET['page']))
+									{
+										$page = intval($_GET['page']);
+										$limit = 10;
+										$start = ($_GET['page']-1)*$limit;
+										$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
+									}
+									
+								else{
+									$page = 1;
+									$limit = 10;
+									$start = ($page-1)*$limit;
+									$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
+								}
 							}
 
 							else{
@@ -186,8 +198,7 @@ class Root
 					{
 							if (isset($_GET['commentid']) && isset($_GET['id']))
 							{
-								$controlf = new Controlfront;
-								$PostAndComments = $controlf->Alert($_GET['commentid'], $_GET['id']);	
+								$PostAndComments = $this->_controlf->Alert($_GET['commentid'], $_GET['id']);	
 							}
 
 							else{
@@ -201,8 +212,7 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-							$controlb = new Controlback;
-							$AlertComments = $controlb->AlertList();	
+							$AlertComments = $this->_controlb->AlertList();	
 						}
 						else{
 								throw new Exception('Cette page est en accès limité, merci de vous connecter');
@@ -221,8 +231,7 @@ class Root
 							{
 									if(ctype_digit($_POST['chapter']))
 									{
-										$controlb = new Controlback;
-										$UpdateP = $controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $_GET['id']);
+										$UpdateP = $this->_controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $_GET['id']);
 									}
 									else{
 										throw new Exception('La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier');
@@ -244,8 +253,7 @@ class Root
 						{
 							if (isset($_GET['id']))
 							{
-								$controlb = new Controlback;
-								$UpdatePview = $controlb->updatePostView($_GET['id']);			
+								$UpdatePview = $this->_controlb->updatePostView($_GET['id']);			
 							}
 							else{
 								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
@@ -265,8 +273,7 @@ class Root
 						{
 							if (isset($_GET['id']))
 							{
-								$controlb = new Controlback;
-								$Deleteconf = $controlb->deletePostconf($_GET['id']);
+								$Deleteconf = $this->_controlb->deletePostconf($_GET['id']);
 							}
 							else{
 								throw new Exception('L\'affichage du post a échoué il manque son identifiant');
@@ -284,8 +291,7 @@ class Root
 						{
 							if (isset($_GET['id']))
 							{
-								$controlb = new Controlback;
-								$DeleteP = $controlb->deletePost($_GET['id']);
+								$DeleteP = $this->_controlb->deletePost($_GET['id']);
 							}
 							else{
 								throw new Exception('L\'identifiant du post est introuvable');
@@ -300,8 +306,7 @@ class Root
 					{
 						if (isset($_GET['id']) && isset($_POST['author']) && isset($_POST['comment'])) 
 						{
-								$controlf= new Controlfront;
-								$CreateC = $controlf-> CreateComment($_GET['id'], $_POST['author'], $_POST['comment']);
+								$CreateC = $this->_controlf-> CreateComment($_GET['id'], $_POST['author'], $_POST['comment']);
 						}
 						else{
 							throw new Exception('La création du commentaire a échouée');
@@ -317,8 +322,7 @@ class Root
 						{
 							if (isset($_GET['commentid']))
 							{
-								$controlb = new Controlback;
-								$DeleteC = $controlb->Updatecomment($_GET['commentid']);
+								$DeleteC = $this->_controlb->Updatecomment($_GET['commentid']);
 							}
 							else{
 								throw new Exception('L\'identifiant du commentaire est introuvable');
@@ -338,8 +342,7 @@ class Root
 						{
 							if (isset($_GET['commentid']))
 							{
-								$controlb = new Controlback;
-								$DeleteC = $controlb->Validatecomment($_GET['commentid']);
+								$DeleteC = $this->_controlb->Validatecomment($_GET['commentid']);
 							}
 							else{
 								throw new Exception('L\'identifiant du commentaire est introuvable');
@@ -353,11 +356,10 @@ class Root
 					
 				}
 				else{
-					$controlf =new Controlfront;
-					$controlf->Listposts();
+					$this->_controlf->Listposts();
 				}
 			}
-		
+
 			catch (Exception $e) 
 			{
     			echo 'Erreur reçue : '. $e->getMessage();	

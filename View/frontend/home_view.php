@@ -6,8 +6,7 @@
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
 					  language_url : '../../User/Language/fr_FR.js',
-					  branding : false,
-					  width : 700});</script>
+					  branding : false,});</script>
 <title>Administration du blog</title>
 </head>
 
@@ -48,7 +47,7 @@
 		</section>
 	
 		<article id="content">
-			<p><?=$cut?>...</p>
+			<?=$cut.'...</p>'?>
 			<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
 		</article>
 	</div>
