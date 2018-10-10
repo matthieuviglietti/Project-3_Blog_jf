@@ -29,8 +29,11 @@
 	<?php
 	while ($datapost = $listposts->fetch())
 	{
-	?>
-		
+		date_default_timezone_set('Europe/Paris');
+		if (strtotime($datapost['post_date']) <= strtotime(date('Y-m-d H:i:s') ."\n"))
+		{
+		?>
+			
 			<section id="title">
 				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
 				<aside class="button">
@@ -39,7 +42,21 @@
 				</aside>
 			</section>
 		
-	<?php
+		<?php
+		}
+		else
+		{
+		?>
+			<section id="titlefuture">
+				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
+				<aside class="button">
+					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=$datapost['id']?>">Supprimer</a>
+					<a class="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>
+				</aside>
+			</section>
+		<?php
+		}
+	
 	}
 	?>
 	</div>

@@ -9,7 +9,7 @@
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
 					  width : 520});</script>
-<title>Administration du blog</title>
+<title>Post - Blog - Jean Forteroche</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
 	
 	
 		<div id="postview">
-			<p id="author">Publié par <?=$post['author']?> le <?=$post['post_date']?></p>
+			<p id="author">Publié par <?=$post['author']?> le <?=$post['post_date_fr']?></p>
 
 			<article id='contentpost'><?=$post['content']?></article>
 		</div>
@@ -93,7 +93,7 @@
 					?>
 					<section id="backcomments">
 						<aside id="separatecomments">
-							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - <span class="red">Commentaire signalé</span></a></em></p>
+							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - <span class="red">Commentaire signalé</span></a></em></p>
 							<p><?= nl2br($comment['comment'])?></p>
 						</aside>
 					</section>
@@ -105,7 +105,7 @@
 					?>
 					<section id="backcomments">
 						<aside id="separatecomments">
-							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date']) ?> - <span class="brown">Commentaire modéré par l'auteur</span></em></p>
+							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?> - <span class="brown">Commentaire modéré par l'auteur</span></em></p>
 							<p><?= nl2br($comment['comment'])?></p>
 						</aside>
 					</section>
@@ -117,7 +117,7 @@
 					?>
 					<section id="backcomments">
 						<aside id="separatecomments">
-							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
+							<p><strong class="brown"><?= htmlspecialchars($comment['author']) ?></strong><em class="date"> - le <?= htmlspecialchars($comment['comment_date_fr']) ?><a class="brown" id="alert" href="index.php?action=alertc&amp;commentid=<?= htmlspecialchars($comment['id'])?>&amp;id=<?= htmlspecialchars($post['id'])?>"> - Signaler le commentaire</a></em></p>
 							<p><?= nl2br($comment['comment'])?></p>
 						</aside>
 					</section>

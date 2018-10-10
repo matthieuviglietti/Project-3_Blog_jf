@@ -43,7 +43,11 @@
 			<input name="title" type="text" Value="<?=$data['title']?>"/>
 			<br/>
 			<label  for='chapter'>Épisode n°: </label><br/>
-			<input name="chapter" type="text"/>
+			<input name="chapter" type="text" value="<?=$data['chapter']?>"/>
+			<br/>
+			<?php date_default_timezone_set('Europe/Paris');?>
+			<input name="postdate" type="text" value="<?=$data['post_date_fr']?>" />
+			<span>Format : JJ-MM-AAAA HH:MM:SS</span>
 			<br/>
 			<label id="auhorform" for='author'>Auteur : </label><br/>
 			<input name="author" type="text" value="<?=$data['author']?>"/>

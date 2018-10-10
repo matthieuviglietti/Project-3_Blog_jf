@@ -23,7 +23,7 @@ class CommentManager extends Manager
 	public function getComments($postid, $start, $limit)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT id, post_id, author, comment, comment_date, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
+		$req = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr, alert FROM comments WHERE post_id= ? ORDER BY comment_date DESC LIMIT '.$start.','.$limit);
 		$req->execute(array($postid));
 		
 		return $req;
@@ -42,7 +42,7 @@ public function getPagination($postid)
 	public function selectComment($commentid)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT id, post_id, comment, comment_date WHERE id= ?');
+		$req = $db->prepare('SELECT id, post_id, comment, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr WHERE id= ?');
 		$req->execute(array($commentid));
 		
 		return $req;
@@ -80,7 +80,7 @@ public function getPagination($postid)
 	public function alertList()
 	{
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT id, comment, author, comment_date FROM comments WHERE alert= "1"');
+		$req = $db->query('SELECT id, comment, author, DATE_FORMAT(comment_date, "%d/%m/%Y %Hh%i:%ss") comment_date_fr FROM comments WHERE alert= "1"');
 		
 		return $req;
 		

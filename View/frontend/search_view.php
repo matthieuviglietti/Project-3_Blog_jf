@@ -37,7 +37,7 @@
 		while ($searchresults = $search->fetch())
 		{
 			?>
-			<a href="index.php?action=postfront&id=<?=$searchresults['id']?>">Épisode n°<?=$searchresults['chapter']?> : <?=$searchresults['title']?></a></br>
+			<a id="searchresults" href="index.php?action=postfront&id=<?=$searchresults['id']?>">Épisode n°<?=$searchresults['chapter']?> : <?=$searchresults['title']?></a></br>
 			<?php
 			}
 

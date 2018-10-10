@@ -42,7 +42,7 @@
 						<article id="alertc">
 							<aside id="info">
 								<p><strong>Auteur :</strong> <?= htmlspecialchars($alert['author'])?></p>
-								<p><strong>Date du commentaire :</strong> <?= htmlspecialchars($alert['comment_date'])?></p>
+								<p><strong>Date du commentaire :</strong> <?= htmlspecialchars($alert['comment_date_fr'])?></p>
 								<p><strong>Commentaire :</strong> <?= nl2br($alert['comment'])?></p>
 							</aside>
 							<aside class="buttonc">

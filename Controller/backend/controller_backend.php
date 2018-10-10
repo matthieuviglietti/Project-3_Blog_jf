@@ -51,10 +51,10 @@ class Controlback
 		require('View/backend/back_home_view.php');
 	}
 	
-	public function CreatePost($title, $chapter, $author, $content)
+	public function CreatePost($title, $chapter, $author, $content, $postdateformat)
 	{
 		$postmanager = new PostManager;
-		$createpost = $postmanager->createPost($title, $chapter, $author, $content);
+		$createpost = $postmanager->createPost($title, $chapter, $author, $content, $postdateformat);
 	
 		header('Location: index.php?action=listp');
 	}
@@ -68,10 +68,10 @@ class Controlback
 	}
 	
 	
-	public function UpdatePost($title, $chapter, $content, $postid)
+	public function UpdatePost($title, $chapter, $content, $postdate, $postid)
 	{
 		$postmanager = new PostManager;
-		$updatepost = $postmanager->updatePost($title, $chapter, $content, $postid);
+		$updatepost = $postmanager->updatePost($title, $chapter, $content, $postdate, $postid);
 		
 		header('Location: index.php?action=listp');
 	}

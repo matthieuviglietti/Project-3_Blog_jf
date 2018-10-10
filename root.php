@@ -32,11 +32,12 @@ class Root
 						session_start();
 							if (isset($_SESSION['name']) && isset($_SESSION['id']))
 							{
-								if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']) && isset($_POST['chapter']))
+								if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']) && isset($_POST['chapter']) && isset($_POST['postdate']))
 								{
-									if(ctype_digit($_POST['chapter']))
+									if (ctype_digit($_POST['chapter']))
 									{
-										$CreateP = $this->_controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content']);
+										$postdateformat = date('Y-m-d H:i:s', strtotime($_POST['postdate']));
+										$CreateP = $this->_controlb->CreatePost($_POST['title'], $_POST['chapter'], $_POST['author'], $_POST['content'], $postdateformat);
 									}
 									else{
 										throw new Exception('<div class="exception">La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier</div>');
@@ -227,11 +228,12 @@ class Root
 						session_start();
 						if (isset($_SESSION['name']) && isset($_SESSION['id']))
 						{
-								if (isset($_POST['title']) &&isset($_POST['chapter']) && isset($_POST['content']) && isset($_GET['id']))
+								if (isset($_POST['title']) &&isset($_POST['chapter']) && isset($_POST['content']) && isset($_GET['id']) && isset($_POST['postdate']))
 							{
 									if(ctype_digit($_POST['chapter']))
 									{
-										$UpdateP = $this->_controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $_GET['id']);
+										$postdate = date('Y-m-d H:i:s', strtotime($_POST['postdate']));
+										$UpdateP = $this->_controlb->updatePost($_POST['title'], $_POST['chapter'], $_POST['content'], $postdate, $_GET['id']);
 									}
 									else{
 										throw new Exception('<div class="exception">La mise à jour du post a échouée, le numéro d\'épisode n\'est pas un nombre entier</div>');

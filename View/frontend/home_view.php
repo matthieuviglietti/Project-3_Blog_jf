@@ -36,39 +36,63 @@
 	<?php
 	while ($datapost = $listposts->fetch())
 	{
-		$cut = substr($datapost['content'], 0, 500);
-	?>
-	
-	<div id="container">
-		<section id="title">
-			<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> : <?= nl2br($datapost['title'])?>"</h4><br/>
-			<p class="book">Un billet simple pour l'Alaska</p>
-			<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date']?></p><br/>
-		</section>
-	<?php	
-		if (strlen($datapost['content'] < 500))
+		date_default_timezone_set('Europe/Paris');
+		$cut = substr($datapost['content'], 0, 800);
+		
+		if (strtotime($datapost['post_date']) <= strtotime(date('Y-m-d H:i:s') ."\n"))
 		{
 			?>
-			<article id="content">
-				<?=$cut.'...</p>'?>
-				<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
-			</article>
-		<?php
+
+			<div id="container">
+				<section id="title">
+					<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> : <?= nl2br($datapost['title'])?>"</h4><br/>
+					<p class="book">Un billet simple pour l'Alaska</p>
+					<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date_fr']?></p><br/>
+				</section>
+			<?php	
+				if (strlen( $datapost['content'] < 800))
+				{
+					?>
+					<article id="content">
+						<?=$cut.'...</p>'?>
+						<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
+					</article>
+				<?php
+				}
+				else{
+					?>
+					<article id="content">
+						<?=$cut?>
+						<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
+					</article>
+				<?php
+				}
+				?>
+			</div>
+			<?php
 		}
-		else{
+		else
+		{
 			?>
-			<article id="content">
-				<?=$cut?>
-				<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a> 
-			</article>
-		<?php
-		}
-		?>
-	</div>
+
+			<div id="containerfuture">
+				<section id="titlefuture">
+				</section>
 		
-	<?php
+				<article id="contentfuture">
+					<div id="soon">
+						<h4 class="grey">Épisode n°<?= htmlspecialchars($datapost['chapter'])?></h4><br/> 
+						<h4 class="grey"><?=$datapost['post_date_fr']?></h4>
+					</div>
+				</article>
+				<?php
+				}
+				?>
+			</div>
+			<?php
+		
 	}
-	?>
+			?>
 	
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 	

@@ -35,20 +35,27 @@
 	
 	<h3>Publier un nouvel épisode</h3>
 	
-	<form method="post" action="index.php?action=createp">
-		<label  for='title'>Titre de l'épisode : </label><br/>
-		<input name="title" type="text"/>
-		<br/>
-		<label  for='chapter'>Épisode n°: </label><br/>
-		<input name="chapter" type="text"/>
-		<br/>
-		<label for='author'>Auteur : </label><br/>
-		<input name="author" type="text" value="Jean Forteroche"/>
-		<br/>
-		<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'></textarea>
-		<a href="index.php?action=board" id="pcancel" type="cancel">Annuler</a>
-		<input id="psubmit" type="submit" value="Diffuser l'épisode"/>		
-	</form>
+	<div id="space">
+		<form method="post" action="index.php?action=createp">
+			<label  for='title'>Titre de l'épisode : </label><br/>
+			<input name="title" type="text"/>
+			</br>
+			<label  for='post_date'>Date et heure de publication : </label><br/>
+			<?php date_default_timezone_set('Europe/Paris');?>
+			<input name="postdate" type="text" value="<?= date('d-m-Y H:i:s') ."\n"?>" />
+			<span>Format : JJ-MM-AAAA HH:MM:SS</span>
+			<br/>
+			<label  for='chapter'>Épisode n°: </label><br/>
+			<input name="chapter" type="text"/>
+			<br/>
+			<label for='author'>Auteur : </label><br/>
+			<input name="author" type="text" value="Jean Forteroche"/>
+			<br/>
+			<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'></textarea>
+			<a href="index.php?action=board" id="pcancel" type="cancel">Annuler</a>
+			<input id="psubmit" type="submit" value="Diffuser l'épisode"/>		
+		</form>
+	</div>
 	
 </body>
 </html>

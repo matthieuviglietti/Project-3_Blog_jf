@@ -218,6 +218,22 @@ nav ul{
 	padding: 5px;
 }
 
+#space{
+	margin-top: 30px;
+}
+
+#titlefuture{
+	background-color:grey;
+	width: 24%;
+	height: 20vw;
+	margin: 10px 2px 0px 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 5px;
+}
+
 .button{
 	display: flex;
 	margin-top: 30px;
@@ -294,5 +310,8 @@ nav ul{
 	border-radius: 5px;
 }
 
+form span{
+	font-size: 0.6em;
+}
 
 
