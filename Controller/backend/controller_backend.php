@@ -6,16 +6,27 @@ require_once('Model/AdminManager.php');
 
 class Controlback
 {
+	private $_adminmanager;
+	private $_postmanager;
+	private $_commentmanager;
+	
+	public function __construct()
+	{
+		$this->_adminmanager= new AdminManager();
+		$this->_commentmanager= new CommentManager();
+		$this->_postmanager= new PostManager();
+	}
 	
 	public function LoginView()
 	{
 		require('View/login_view.php');
 	}
 	
+	//For AdminManager and PostManager
+	
 	public function LogIn($name, $pass)
 	{
-		$adminmanager= new AdminManager;
-		$resultat = $adminmanager->logIn($name, $pass);
+		$resultat = $this->_adminmanager->logIn($name, $pass);
 		
 		$ispasswordCorrect = password_verify($pass, $resultat['pass']);
 
@@ -30,7 +41,6 @@ class Controlback
 		else{
 				throw new Exception('L\'identifiant ou le mot de passe est incorrect');
 			}
-		
 	}
 	
 	public function Logged()
@@ -40,8 +50,7 @@ class Controlback
 	
 	public function LogOut()
 	{
-		$adminmanager= new AdminManager;
-		$logout = $adminmanager->logOut();
+		$logout = $this->_adminmanager->logOut();
 		
 		require('View/logout_view.php');
 	}
@@ -53,16 +62,14 @@ class Controlback
 	
 	public function CreatePost($title, $chapter, $author, $content, $postdateformat)
 	{
-		$postmanager = new PostManager;
-		$createpost = $postmanager->createPost($title, $chapter, $author, $content, $postdateformat);
+		$createpost = $this->_postmanager->createPost($title, $chapter, $author, $content, $postdateformat);
 	
 		header('Location: index.php?action=listp');
 	}
 		
 	public function ListPosts()
 	{
-		$postmanager = new PostManager;
-		$listposts = $postmanager->getPosts();
+		$listposts = $this->_postmanager->getPosts();
 		
 		require('View/backend/back_listposts_view.php');
 	}
@@ -70,16 +77,14 @@ class Controlback
 	
 	public function UpdatePost($title, $chapter, $content, $postdate, $postid)
 	{
-		$postmanager = new PostManager;
-		$updatepost = $postmanager->updatePost($title, $chapter, $content, $postdate, $postid);
+		$updatepost = $this->_postmanager->updatePost($title, $chapter, $content, $postdate, $postid);
 		
 		header('Location: index.php?action=listp');
 	}
 	
 	public function updatePostView($postid)
 	{
-		$postmanager = new PostManager;
-		$updatepostview = $postmanager->updatePostview($postid);
+		$updatepostview = $this->_postmanager->updatePostview($postid);
 		
 		require('View/backend/update_back_view.php');
 	}
@@ -91,8 +96,7 @@ class Controlback
 	
 	public function DeletePost($postid)
 	{
-		$postmanager = new PostManager;
-		$updatepost = $postmanager->deletePost($postid);
+		$updatepost = $this->_postmanager->deletePost($postid);
 		
 		header('Location: index.php?action=listp');
 	}
@@ -101,48 +105,42 @@ class Controlback
 	
 	public function CreateComment($postid, $author, $comment)
 	{
-		$commentmanager = new CommentManager;
-		$createcomment = $commentmanager->newComment($postid, $author, $comment);
+		$createcomment = $this->_commentmanager->newComment($postid, $author, $comment);
 		
 		return $createcomment;
 	}
 	
 	public function Selectcomment($commentid)
 	{
-		$commentmanager = new CommentManager;
-		$selectComment = $commentmanager->selectComment($commentid);
+		$selectComment = $this->_commentmanager->selectComment($commentid);
 		
 		require('View/frontend/update_back_view.php');
 	}
 	
 	public function AlertList()
 	{
-		$commentmanager = new CommentManager;
-		$alertlist = $commentmanager->alertList();
+		$alertlist = $this->_commentmanager->alertList();
 		
 		require('View/backend/alert_back_view.php');
 	}
 	
 	public function Updatecomment($commentid)
 	{
-		$commentmanager = new CommentManager;
-		$UpdateComment = $commentmanager->updateComment($commentid);
+		$UpdateComment = $this->_commentmanager->updateComment($commentid);
 		
 		header('Location: index.php?action=alertcb');
 	}
 	
 	public function Validatecomment($commentid)
 	{
-		$commentmanager = new CommentManager;
-		$UpdateComment = $commentmanager->validateComment($commentid);
+		$UpdateComment = $this->_commentmanager->validateComment($commentid);
 		
 		header('Location: index.php?action=alertcb');
 	}
 	
 	public function Deletecomment($commentid)
 	{
-		$commentmanager = new CommentManager;
-		$DeleteComment = $commentmanager->deleteComment($commentid);
+		$DeleteComment = $this->_commentmanager->deleteComment($commentid);
 		
 		require('Location: update_back_view.php');
 	}

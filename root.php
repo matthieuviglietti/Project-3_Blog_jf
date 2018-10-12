@@ -14,18 +14,16 @@ class Root
 		$this->_controlf = new Controlfront();
 	}
 	
-	public function selectRoot()
+	public function selectRoot() //function for index.php
 	{
 			try
 			{
-				
 				if (isset($_GET['action']))
 				{
+					//*****************backoffice admin functions - secure roots*******************// 
 					
-				
-					//backoffice 
 					
-					//Create a new Episode (Post)
+					//to create a new Episode (Post)
 				
 					if ($_GET['action'] == 'createp') 
 					{
@@ -51,8 +49,6 @@ class Root
 							else{
 								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br><a href="index.php?action=gotologin">Se connecter</a></div>');
 							}
-						
-		
 					}
 					
 					//to Login View
@@ -83,6 +79,8 @@ class Root
 						}
 					}
 				
+					//Login success go to action=board
+					
 					elseif ($_GET['action'] == 'logged')
 					{
 						session_start();
@@ -96,10 +94,7 @@ class Root
 						}
 					}
 					
-					elseif ($_GET['action'] == 'logout')
-					{
-						$logout = $this->_controlb->LogOut();
-					}
+					//Homepage Backoffice (Create a new post)
 					
 					elseif ($_GET['action'] == 'board')
 					{
@@ -113,7 +108,14 @@ class Root
 							}
 					}
 					
-					//List posts back
+					//Logout function
+					
+					elseif ($_GET['action'] == 'logout')
+					{
+						$logout = $this->_controlb->LogOut();
+					}
+					
+					//List posts backoffice
 				
 					elseif ($_GET['action'] == 'listp')
 					{	
@@ -126,88 +128,9 @@ class Root
 								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
-				
-					//List posts front
-				
-					elseif ($_GET['action'] == 'listpfront')
-					{
-							$ListP = $this->_controlf->ListPosts();
-					}
-
-					elseif ($_GET['action'] == 'post')
-					{
-						session_start();
-						if (isset($_SESSION['name']) && isset($_SESSION['id']))
-						{
-								if (isset($_GET['postid']))
-								{
-										$PostAndComments = $this->_controlb->Post($_GET['id']);	
-								}
-								else{
-								throw new Exception('<div class="exception">l\'id du post n\'est pas trouvable</div>');
-								}
-								
-						}
-						else{
-								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
-						}
-							
-					}
-						
 					
-				
-					//Post and comments front
+					//list of alert comments
 					
-					elseif ($_GET['action'] == 'search')
-					{
-							if (isset($_GET['search']) && $_GET['search']!=NULL)
-							{
-								$Search = $this->_controlf->GetSearch($_GET['search']);
-							}
-							else{
-								throw new Exception('<div class="exception">la recherche a échouée, Vous n\'avez pas spécifié de mot clé</div>');
-							}
-					}
-				
-					elseif ($_GET['action'] == 'postfront')
-					{
-							if (isset($_GET['id']))
-							{
-								if(isset($_GET['page']) && intval($_GET['page']))
-									{
-										$page = intval($_GET['page']);
-										$limit = 10;
-										$start = ($_GET['page']-1)*$limit;
-										$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
-									}
-									
-								else{
-									$page = 1;
-									$limit = 10;
-									$start = ($page-1)*$limit;
-									$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
-								}
-							}
-
-							else{
-								throw new Exception('<div class="exception">l\'id du post n\'est pas trouvable</div>');
-							}
-					}
-				
-					//alert comment -- update db //Voir pour message alerte
-					elseif ($_GET['action'] == 'alertc')
-					{
-							if (isset($_GET['commentid']) && isset($_GET['id']))
-							{
-								$PostAndComments = $this->_controlf->Alert($_GET['commentid'], $_GET['id']);	
-							}
-
-							else{
-								throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
-							}
-					}
-				
-					//list of alert comment -- backend
 					elseif ($_GET['action'] == 'alertcb')
 					{
 						session_start();
@@ -219,9 +142,8 @@ class Root
 								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
-				
 
-					//update Posts
+					//update Posts function
 				
 					elseif ($_GET['action'] == 'updatep')
 					{
@@ -247,6 +169,8 @@ class Root
 								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
+					
+					//Update post view with form
 					
 					elseif ($_GET['action'] == 'updatepview')
 					{
@@ -303,23 +227,6 @@ class Root
 								throw new Exception('<div class="exception">Cette page est en accès limité, merci de vous connecter </br> <a href="index.php?action=gotologin">Se connecter</a></div>');
 						}
 					}
-
-					elseif ($_GET['action'] == 'createc')
-					{
-						if (isset($_GET['id']) && isset($_POST['author']) && isset($_POST['comment'])) 
-						{
-							if ($_POST['comment'] != NULL)
-							{
-								$CreateC = $this->_controlf-> CreateComment($_GET['id'], $_POST['author'], $_POST['comment']);
-							}
-							else{
-								throw new Exception('<div class="exception">Le commentaire est vide</div>');
-							}
-						}
-						else{
-							throw new Exception('<div class="exception">La création du commentaire a échouée</div>');
-						}
-					}
 					
 					//backend update comment with delete phrase
 					
@@ -361,8 +268,91 @@ class Root
 						}
 					}
 					
+					//*****************frontoffice user root and functions*******************// 
+				
+					//List posts front - Homepage
+				
+					elseif ($_GET['action'] == 'listpfront')
+					{
+							$ListP = $this->_controlf->ListPosts();
+					}
 					
+					//one Post and comments - Pagination
+				
+					elseif ($_GET['action'] == 'postfront')
+					{
+							if (isset($_GET['id']))
+							{
+								if(isset($_GET['page']) && intval($_GET['page']))
+									{
+										$page = intval($_GET['page']);
+										$limit = 10;
+										$start = ($_GET['page']-1)*$limit;
+										$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
+									}
+									
+								else{
+									$page = 1;
+									$limit = 10;
+									$start = ($page-1)*$limit;
+									$PostAndComments = $this->_controlf->Post($_GET['id'], $start, $limit, $page);	
+								}
+							}
+
+							else{
+								throw new Exception('<div class="exception">l\'id du post n\'est pas trouvable</div>');
+							}
+					}
+				
+					//alert comment -- update function db 
+					
+					elseif ($_GET['action'] == 'alertc')
+					{
+							if (isset($_GET['commentid']) && isset($_GET['id']))
+							{
+								$PostAndComments = $this->_controlf->Alert($_GET['commentid'], $_GET['id']);	
+							}
+
+							else{
+								throw new Exception('<div class="exception">le commentaire n\'a pas pu etre identifié</div>');
+							}
+					}
+					
+					//Create a new comment on post
+					
+					elseif ($_GET['action'] == 'createc')
+					{
+						if (isset($_GET['id']) && isset($_POST['author']) && isset($_POST['comment'])) 
+						{
+							if ($_POST['comment'] != NULL)
+							{
+								$CreateC = $this->_controlf-> CreateComment($_GET['id'], $_POST['author'], $_POST['comment']);
+							}
+							else{
+								throw new Exception('<div class="exception">Le commentaire est vide</div>');
+							}
+						}
+						else{
+							throw new Exception('<div class="exception">La création du commentaire a échouée</div>');
+						}
+					}
+					
+					//Search bar
+					
+					elseif ($_GET['action'] == 'search')
+					{
+							if (isset($_GET['search']) && $_GET['search']!=NULL)
+							{
+								$Search = $this->_controlf->GetSearch($_GET['search']);
+							}
+							else{
+								throw new Exception('<div class="exception">la recherche a échouée, Vous n\'avez pas spécifié de mot clé</div>');
+							}
+					}	
 				}
+				
+				//Defaut root Homepage user
+				
 				else{
 					$this->_controlf->Listposts();
 				}
@@ -374,4 +364,3 @@ class Root
 			}
 	}
 }
-//}

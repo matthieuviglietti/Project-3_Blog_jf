@@ -8,7 +8,7 @@ class CommentManager extends Manager
 	{ 
 		$temps=365*24*3600;
 
-		setcookie("pseudo", $author, time()+$temps);
+		setcookie("pseudo", $author, time()+$temps); //cookie pseudo for comment form
 
 		$db = $this->dbConnect();
 		$req = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(:postid, :author, :comment, NOW())');

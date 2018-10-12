@@ -23,11 +23,9 @@ class PostManager extends Manager
 		$db = $this->dbConnect();
 		$req = $db->query('SELECT id, title, chapter, content, author, post_date, DATE_FORMAT(post_date, "%d/%m/%Y %H:%i:%s") post_date_fr FROM posts ORDER BY post_date');
 		
-		return $req;
-		
+		return $req;	
 	}
 		
-     
 	public function getPost($postid)
 	{
 		$db = $this->dbConnect();
@@ -71,6 +69,5 @@ class PostManager extends Manager
 		$req = $db->query('SELECT id, title, chapter FROM posts WHERE title LIKE "%'.$keyword.'%" OR chapter LIKE "%'.$keyword.'%" OR content LIKE "%'.$keyword.'%"');
 		
 		return $req;
-		
 	}
 }

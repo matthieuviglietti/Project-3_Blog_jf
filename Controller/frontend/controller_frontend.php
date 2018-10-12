@@ -5,57 +5,51 @@ require_once('Model/CommentManager.php');
 
 class Controlfront
 {
+	private $_postmanager;
+	private $_commentmanager;
 	
-	//For PostManager 
+	public function __construct()
+	{
+		$this->_postmanager= new PostManager();
+		$this->_commentmanager= new CommentManager();
+	}
 		
 	public function ListPosts()
 	{
-		$postmanager = new PostManager;
-		$listposts = $postmanager->getPosts();
+		$listposts = $this->_postmanager->getPosts();
 		
 		require('View/frontend/home_view.php');
 	}
 	
 	public function Post($postid, $start, $limit, $page) //getcomment for one post
 	{
-		$postmanager = new PostManager;
-		$commentmanager = new CommentManager;
-		$post = $postmanager->getPost($postid);
-		$getcomment = $commentmanager->getComments($postid, $start, $limit); 
-		$totalcomments = $commentmanager->getPagination($postid);
-		$total = $totalcomments['totalc'];
-		$totalpagecomments = ceil($total / $limit);
-		
-	
+		$post = $this->_postmanager->getPost($postid);
+		$getcomment = $this->_commentmanager->getComments($postid, $start, $limit); 
+		$totalcomments = $this->_commentmanager->getPagination($postid);
+		$total = $totalcomments['totalc']; //Pagination
+		$totalpagecomments = ceil($total / $limit); //Pagination
+
 		require('View/frontend/post_viewcook.php');
 		
 	}
 	
 	public function GetSearch($keyword)
 	{
-		$postmanager = new PostManager;
-		$search = $postmanager->getSearch($keyword);
+		$search = $this->_postmanager->getSearch($keyword);
 		
 		require('View/frontend/search_view.php');
 	}
-	
 
-	//For CommentManager
-	
 	public function CreateComment($postid, $author, $comment)
 	{
-		$commentmanager = new CommentManager;
-		$createcomment = $commentmanager->newComment($postid, $author, $comment);
+		$createcomment = $this->_commentmanager->newComment($postid, $author, $comment);
 		
 		header('Location: index.php?action=postfront&id='.$postid.'');
 	}
 	
 	public function Alert($commentid, $postid)
 	{
-		$commentmanager = new CommentManager;
-		$alertcomment = $commentmanager->alertComment($commentid);
-		
-		//Mettre un message merci pour votre signalement
+		$alertcomment = $this->_commentmanager->alertComment($commentid);
 		
 		header('Location: index.php?action=postfront&id='.$postid.'');
 		
