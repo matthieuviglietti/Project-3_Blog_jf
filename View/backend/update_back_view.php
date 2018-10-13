@@ -2,25 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style.css" rel="stylesheet"/>
+<link href="User/style/style-back.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
 					  width : 790,
 					  height: 600,
-					  content_css:'User/content.css'});</script>
+					  content_css:'User/style/content.css'});</script>
 <title>Administration du blog</title>
 </head>
 
 <body>
-	
+
 	<header class="header">
 	<div id="logo">
 		<h1>Jean Forteroche</h1>
 		<h2>Acteur - Écrivain</h2>
 	</div>
-	
+
 	<nav id="nav">
 		<ul>
 			<li><a href="index.php?action=board">Publier un épisode</a></li>
@@ -30,11 +30,11 @@
 		</ul>
 	</nav>
 	</header>
-	
+
 	<aside><h3>Mettre à jour un épisode</h3></aside>
-	
+
 	<?php
-	
+
 	while ($data = $updatepostview->fetch())
 	{
 		?>
@@ -54,13 +54,13 @@
 			<br/>
 			<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'><?=$data['content']?></textarea>
 			<a href="index.php?action=listp" id="pcancel" type="cancel">Annuler</a>
-			<input id="psubmit" type="submit" value="Enregistrer"/>		
+			<input id="psubmit" type="submit" value="Enregistrer"/>
 		</form>
 	<?php
 	}
 	?>
-	
-	
-	
+
+
+
 </body>
 </html>

@@ -3,17 +3,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style-front.css" rel="stylesheet"/>
+<link href="User/style/style-front.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
-					  width : 520});</script>
+						max_width : 520});</script>
 <title>Post - Blog - Jean Forteroche</title>
 </head>
 
 <body>
-	
+
 	<header class="header">
 		<a href="index.php">
 			<div id="logo">
@@ -21,7 +21,7 @@
 				<h2>Acteur - Écrivain</h2>
 			</div>
 		</a>
-		
+
 		<div id="containsearch">
 			<a id="home" href="index.php">Accueil</a>
 			<div id="sb-search">
@@ -32,23 +32,23 @@
 				</form>
 			</div>
 		</div>
-	
+
 	</header>
-	
+
 	<div class="margintitle">
     	<h5><?=nl2br($post['title'])?></h5>
 	</div>
-	
-	
+
+
 		<div id="postview">
 			<p id="author">Publié par <?=$post['author']?> le <?=$post['post_date_fr']?></p>
 
 			<article id='contentpost'><?=$post['content']?></article>
 		</div>
-	
-	
+
+
 		<h6>Lire et réagir</h6>
-	
+
 		<?php
 			if (isset ($_COOKIE['pseudo']))
 			{
@@ -99,7 +99,7 @@
 					</section>
 					<?php
 				}
-				
+
 				elseif ($comment['alert'] == 2)
 				{
 					?>
@@ -111,7 +111,7 @@
 					</section>
 					<?php
 				}
-				
+
 				else
 				{
 					?>
@@ -123,10 +123,10 @@
 					</section>
 					<?php
 				}
-			
+
 			}
 			?>
-			
+
 			<p id="pagination">
 				<?php
 
@@ -142,17 +142,17 @@
 					{
 						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.$post['id'].'">' . $i . '</a> ';
 					}
-					
+
 				}
 				?>
 			</p>
 		</div>
-	
-		
- 	
-	
+
+
+
+
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
-	
+
 	<script type="text/javascript" id="cookiebanner"
  	src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"
 	data-height="60px"
@@ -162,6 +162,6 @@
 	data-expires="31536000"
 	data-moreinfo="https://www.cnil.fr/fr/cookies-traceurs-que-dit-la-loi">
 	</script>
-	
+
     </body>
 </html>

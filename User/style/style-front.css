@@ -1,0 +1,430 @@
+/* CSS Document */
+@import url(font.css);
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding-bottom: 85px;
+  background-image: url(../images/fond-texte.png);
+  background-repeat: repeat;
+  width: 100%; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+p {
+  margin: 0;
+  padding: 0; }
+
+header {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 50px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  @media (max-width: 700px) {
+    header {
+      height: 90px;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      flex-direction: column;
+      flex-wrap: wrap; } }
+  header #logo {
+    width: 170px;
+    margin-left: 30px; }
+    @media (max-width: 700px) {
+      header #logo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 10px auto; } }
+    header #logo h1 {
+      font-family: 'nature_spiritregular';
+      font-size: 2em;
+      margin-bottom: 3px;
+      margin-top: 0; }
+    header #logo h2 {
+      font-family: 'marsekdemi';
+      font-size: 0.5em;
+      margin-top: 0;
+      margin-left: 33px; }
+      @media (max-width: 700px) {
+        header #logo h2 {
+          margin: auto; } }
+
+button {
+  border-style: none;
+  width: 30px;
+  height: 20px;
+  background-image: url("../images/magnifying-glass.png");
+  background-repeat: no-repeat;
+  line-height: 30px; }
+
+#containsearch {
+  width: 400px; }
+  @media (max-width: 700px) {
+    #containsearch {
+      width: auto; } }
+  #containsearch #home {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 33px;
+    border-radius: 2px;
+    margin-right: 20px;
+    font-family: 'nature_spiritregular';
+    font-size: 1.2em;
+    color: black;
+    border: 1px solid black;
+    transition-property: background-color, color, border, border-radius;
+    transition-duration: 0.6s; }
+    #containsearch #home:hover {
+      border: 1px solid #2B9EC5;
+      border-radius: 20px;
+      color: #2B9EC5; }
+    @media (max-width: 700px) {
+      #containsearch #home {
+        display: none; } }
+
+#searchform, #containsearch {
+  display: flex;
+  align-items: center; }
+  @media (max-width: 700px) {
+    #searchform, #containsearch {
+      display: flex; } }
+  #searchform .sb-search-input, #containsearch .sb-search-input {
+    width: 150px;
+    height: 20px; }
+
+#container, #containerfuture {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height: 45vw;
+  margin-bottom: 10px; }
+  @media (max-width: 700px) {
+    #container, #containerfuture {
+      width: 100%;
+      justify-content: center;
+      display: block;
+      height: 300px; } }
+
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-family: 'open_sansitalic'; }
+
+h4 {
+  font-family: 'amaticbold';
+  font-size: 5em;
+  color: white;
+  text-align: center;
+  margin-bottom: 0; }
+  @media (max-width: 700px) {
+    h4 {
+      font-size: 2em; } }
+  @media (max-width: 960px) {
+    h4 {
+      font-size: 3em; } }
+
+.titleextend, #title, #titlemobile, #titlefuture {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+#title, #titlemobile {
+  background-image: url(../images/Alaska-back.jpg); }
+  @media (max-width: 700px) {
+    #title, #titlemobile {
+      width: 100%;
+      height: 300px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: none; } }
+
+#titlefuture {
+  background-image: url("../images/alaska.jpg"); }
+  @media (max-width: 700px) {
+    #titlefuture {
+      width: 100%;
+      display: none;
+      padding: 0;
+      margin-top: 10px; } }
+
+#titlemobile {
+  display: none; }
+  @media (max-width: 700px) {
+    #titlemobile {
+      width: 100%;
+      display: block; } }
+
+.book {
+  color: white;
+  font-family: 'marsekdemi';
+  text-align: center;
+  font-size: 0.7em;
+  margin-top: 0;
+  margin-bottom: 2px; }
+
+.author {
+  font-size: 0.6em;
+  text-align: center;
+  margin-top: 0;
+  color: #B2FAFF; }
+
+.contentextend, #content, #contentfuture {
+  width: 50%;
+  padding: 20px;
+  font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; }
+
+#content {
+  background-color: rgba(179, 179, 179, 0.1); }
+  @media (max-width: 700px) {
+    #content {
+      display: none; } }
+  #content span, #content div, #content p {
+    font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; }
+    @media (max-width: 960px) {
+      #content span, #content div, #content p {
+        font-size: 0.8em; } }
+
+#contentfuture {
+  background-image: url(../images/Alaska-blur.png);
+  background-position: fixed;
+  background-size: cover; }
+  #contentfuture span, #contentfuture div, #contentfuture p {
+    font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; }
+  @media (max-width: 700px) {
+    #contentfuture {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin: 2px auto 0px auto; } }
+  #contentfuture #soon {
+    border-right: 2px solid #59767F;
+    border-left: 2px solid #59767F;
+    width: 50%;
+    display: block;
+    margin: auto; }
+
+.grey {
+  color: #59767F;
+  margin-top: 5px; }
+
+#read {
+  font-family: "Kionaregular", "sans-serif";
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  width: 180px;
+  height: 45px;
+  background-color: #2B9EC5;
+  color: white;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 5px;
+  transition-property: background-color;
+  transition-duration: 1s;
+  margin-top: 30px; }
+  #read:hover {
+    background-color: #59767F; }
+
+/*postview*/
+#postview {
+  width: 960px;
+  display: block;
+  margin: auto;
+  border-left: 4px solid #59767F;
+  border-right: 4px solid #59767F;
+  background-color: rgba(179, 179, 179, 0.1);
+  padding: 10px; }
+  #postview span {
+    font-family: 'open_sansitalic';
+    font-size: 0.6em; }
+  @media (max-width: 700px) {
+    #postview {
+      width: 100%;
+      display: block; } }
+  @media (max-width: 960px) {
+    #postview {
+      width: 100%;
+      display: block; } }
+
+#mceu_30 {
+  display: none; }
+
+#author {
+  font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  text-decoration: underline;
+  font-size: 0.6em;
+  opacity: 0.5;
+  margin-bottom: 8px; }
+
+h5 {
+  font-family: "Kionaregular", "sans-serif";
+  font-size: 2em;
+  text-align: center;
+  color: #59767F;
+  border: solid 1px #59767F;
+  width: 960px;
+  margin: auto; }
+  @media (max-width: 700px) {
+    h5 {
+      width: 100%;
+      display: block;
+      margin-top: 30px; } }
+  @media (max-width: 960px) {
+    h5 {
+      width: 100%;
+      display: block; } }
+
+#contentpost {
+  font-family: "open_sansregular","Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; }
+
+.margintitle {
+  margin-bottom: 40px; }
+
+/*comments section*/
+h6 {
+  font-family: "Kionaregular", "sans-serif";
+  color: white;
+  font-weight: 3000;
+  font-size: 1em;
+  width: 35em;
+  height: 4em;
+  line-height: 4em;
+  margin-left: 30px;
+  margin-bottom: 0px;
+  text-align: center;
+  background-color: #2B9EC5;
+  margin-top: 100px; }
+  @media (max-width: 700px) {
+    h6 {
+      width: 100%;
+      display: block;
+      margin-left: 0; } }
+  @media (max-width: 960px) {
+    h6 {
+      width: 100%;
+      display: block;
+      margin: 100px auto 0 auto; } }
+
+#free {
+  margin-left: 30px;
+  background-color: rgba(179, 179, 179, 0.1);
+  padding: 20px;
+  width: 35em; }
+  #free input, #free label {
+    margin-bottom: 10px; }
+  @media (max-width: 700px) {
+    #free {
+      width: 100%;
+      display: block;
+      margin-left: 0; } }
+  @media (max-width: 960px) {
+    #free {
+      width: 100%;
+      display: block;
+      margin: auto; } }
+  #free #flex {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; }
+    #free #flex #submitc {
+      font-family: "Kionaregular", "sans-serif";
+      background-color: #2B9EC5;
+      height: 40px;
+      width: 70px;
+      color: white;
+      font-weight: bold; }
+
+.brown {
+  color: #2B9EC5; }
+
+.date {
+  font-size: 0.8em; }
+
+#backcomments {
+  background-color: white;
+  padding: 10px;
+  font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 0.9em; }
+
+aside p {
+  margin-top: 0; }
+
+#separatecomments {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d4d4d4; }
+
+#alert {
+  width: 100px; }
+
+label {
+  font-family: "Kionaregular", "sans-serif";
+  font-size: 0.9em; }
+
+#pagination {
+  font-family: "Kionaregular", "sans-serif";
+  text-align: right; }
+  #pagination a {
+    font-weight: normal; }
+
+#text {
+  font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  font-size: 0.8em; }
+
+.red {
+  color: red; }
+
+/*footer*/
+footer {
+  background-color: #59767F;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; }
+  footer a {
+    font-family: 'nature_spiritregular';
+    color: white;
+    line-height: 30px;
+    width: 150px;
+    display: block;
+    margin: auto; }
+
+/*Search View*/
+#searchsection {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; }
+  #searchsection a {
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #59767F;
+    border-radius: 5px;
+    padding: 10px;
+    transition-property: background-color, color;
+    transition-duration: 0.5s; }
+    #searchsection a:hover {
+      background-color: #2B9EC5;
+      color: white; }

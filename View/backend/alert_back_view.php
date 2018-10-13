@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style.css" rel="stylesheet"/>
+<link href="User/style/style-back.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
 					  language_url : 'User/Language/fr_FR.js',
@@ -13,13 +13,13 @@
 </head>
 
 <body>
-	
+
 	<header class="header">
 	<div id="logo">
 		<h1>Jean Forteroche</h1>
 		<h2>Acteur - Écrivain</h2>
 	</div>
-	
+
 	<nav id="nav">
 		<ul>
 			<li><a href="index.php?action=board">Publier un épisode</a></li>
@@ -29,10 +29,10 @@
 		</ul>
 	</nav>
 	</header>
-	
+
 	<h3>Liste des commentaires signalés</h3>
-	
-			
+
+
 				<?php
 
 				while ($alert = $alertlist->fetch())
@@ -47,15 +47,15 @@
 							</aside>
 							<aside class="buttonc">
 								<a class="suppr" href="index.php?action=deletec&amp;commentid=<?=$alert['id']?>">Supprimer</a>
-								<a class="update" href="index.php?action=validatec&amp;commentid=<?=$alert['id']?>">Valider</a>	
+								<a class="update" href="index.php?action=validatec&amp;commentid=<?=$alert['id']?>">Valider</a>
 							</aside>
 						</article>
 					</section>
 				<?php
 				}
 				?>
-			
-	
-	
+
+
+
 </body>
 </html>

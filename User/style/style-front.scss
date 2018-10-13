@@ -1,0 +1,548 @@
+@charset "UTF-8";
+/* CSS Document */
+
+$fontcontent:'open_sansregular',"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+$fonttitle:'Kionaregular', "sans-serif";
+$darkcolor: #59767F;
+$lightcolor: #2B9EC5;
+
+@import "font.css";
+
+$mobile: 700px;
+$tablet: 960px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile}){
+    @content;
+}
+}
+@mixin tablet {
+    @media (max-width: #{$tablet}){
+      @content;
+}
+}
+
+* {-moz-box-sizing: border-box; box-sizing: border-box;}
+
+body{
+	margin: 0;
+	padding-bottom: 85px;
+	background-image: url(../images/fond-texte.png);
+	background-repeat: repeat;
+  width: 100%;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	width: 100%;
+	height: 60px;
+	margin-bottom: 50px;
+	padding-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+  @include mobile{
+    height: 90px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  #logo{
+      width: 170px;
+    	margin-left: 30px;
+
+      @include mobile{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 10px auto;
+      }
+      h1{
+      	font-family: 'nature_spiritregular';
+      	font-size:2em;
+      	margin-bottom: 3px;
+      	margin-top: 0;
+
+      }
+
+      h2{
+      	font-family: 'marsekdemi';
+      	font-size: 0.5em;
+      	margin-top: 0;
+      	margin-left: 33px;
+
+        @include mobile{
+          margin: auto;
+        }
+      }
+    }
+  }
+
+button{
+	border-style: none;
+	width: 30px;
+	height: 20px;
+	background-image: url('../images/magnifying-glass.png');
+	background-repeat: no-repeat;
+	line-height: 30px;
+}
+
+#containsearch{
+	@extend #searchform;
+	width: 400px;
+
+  @include mobile{
+    width: auto;
+  }
+
+  #home{
+  	width:100px;
+  	height: 30px;
+  	text-align: center;
+  	line-height: 33px;
+  	border-radius: 2px;
+  	margin-right: 20px;
+  	font-family: 'nature_spiritregular';
+  	font-size:1.2em;
+  	color: black;
+  	border: 1px solid black;
+  	transition-property: background-color, color, border, border-radius;
+  	transition-duration: 0.6s;
+    &:hover{
+      border: 1px solid $lightcolor;
+      border-radius: 20px;
+      color: $lightcolor;
+    }
+    @include mobile{
+      display: none;
+    }
+  }
+}
+
+#searchform{
+	display: flex;
+	align-items: center;
+
+  @include mobile{
+    display:flex;
+  }
+
+  .sb-search-input{
+  	width: 150px;
+  	height: 20px;
+  }
+}
+
+#container, #containerfuture{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	height: 45vw;
+	margin-bottom: 10px;
+
+  @include mobile{
+    width: 100%;
+    justify-content: center;
+    display: block;
+    height: 300px;
+  }
+}
+
+blockquote{
+	margin: 0;
+	padding: 0;
+	font-family: 'open_sansitalic';
+}
+
+h4{
+	font-family: 'amaticbold';
+	font-size: 5em;
+	color:white;
+	text-align: center;
+	margin-bottom: 0;
+
+  @include mobile{
+    font-size: 2em;
+  }
+  @include tablet{
+    font-size: 3em;
+  }
+}
+
+.titleextend{
+  background-size: cover;
+	background-repeat: no-repeat;
+	background-position: fixed;
+	width: 50%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#title{
+  @extend .titleextend;
+	background-image:url(../images/Alaska-back.jpg);
+
+  @include mobile{
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: none;
+  }
+}
+
+#titlefuture{
+  @extend .titleextend;
+	background-image: url('../images/alaska.jpg');
+
+  @include mobile{
+    width: 100%;
+    display: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+}
+
+#titlemobile{
+  @extend #title;
+  display: none;
+
+  @include mobile{
+    width: 100%;
+    display: block;
+  }
+}
+
+.book{
+	color: white;
+	font-family: 'marsekdemi';
+	text-align: center;
+	font-size: 0.7em;
+	margin-top: 0;
+	margin-bottom: 2px;
+}
+
+.author{
+	font-size: 0.6em;
+	text-align: center;
+	margin-top: 0;
+	color: #B2FAFF;
+}
+
+.contentextend{
+  width: 50%;
+	padding: 20px;
+	font-family:$fontcontent;
+	text-align: justify;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+#content{
+	@extend .contentextend;
+	background-color: rgba(179,179,179,0.10);
+
+  @include mobile{
+    display: none;
+  }
+  span, div, p{
+    font-family:$fontcontent;
+
+    @include tablet{
+      font-size: 0.8em;
+    }
+  }
+}
+
+#contentfuture{
+	@extend .contentextend;
+	background-image: url(../images/Alaska-blur.png);
+	background-position: fixed;
+	background-size: cover;
+
+  span, div, p{
+    font-family:$fontcontent;
+  }
+
+  @include mobile{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 2px auto 0px auto;
+  }
+
+  #soon{
+    border-right: 2px solid $darkcolor;
+    border-left: 2px solid $darkcolor;
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+}
+
+.grey{
+	color: $darkcolor;
+	margin-top: 5px;
+}
+
+#read{
+	font-family: $fonttitle;
+	font-size: 1em;
+	text-decoration: none;
+	font-weight: bold;
+	width: 180px;
+	height: 45px;
+	background-color: $lightcolor;
+	color: white;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 5px;
+	transition-property: background-color;
+	transition-duration: 1s;
+	margin-top: 30px;
+  &:hover{
+    	background-color: $darkcolor;
+  }
+}
+
+/*postview*/
+#postview{
+	width: 960px;
+	display: block;
+	margin: auto;
+	border-left: 4px solid $darkcolor;
+	border-right: 4px solid $darkcolor;
+	background-color: rgba(179,179,179,0.10);
+	padding: 10px;
+  span{
+  	font-family: 'open_sansitalic';
+  	font-size: 0.6em;
+  }
+
+  @include mobile{
+    width: 100%;
+    display: block;
+  }
+
+  @include tablet{
+    width: 100%;
+    display: block;
+  }
+}
+
+#mceu_30{
+  display: none;
+}
+
+#author{
+	font-family: $fontcontent;
+	text-decoration: underline;
+	font-size: 0.6em;
+	opacity: 0.5;
+	margin-bottom: 8px;
+}
+
+h5{
+	font-family: $fonttitle;
+	font-size:2em;
+	text-align: center;
+	color: $darkcolor;
+	border: solid 1px $darkcolor;
+	width: 960px;
+	margin: auto;
+
+  @include mobile{
+    width: 100%;
+    display: block;
+    margin-top: 30px;
+  }
+
+  @include tablet{
+    width: 100%;
+    display: block;
+  }
+}
+
+#contentpost{
+	font-family: "open_sansregular","Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+
+.margintitle{
+	margin-bottom: 40px;
+}
+
+/*comments section*/
+
+h6{
+	font-family: $fonttitle;
+	color: white;
+	font-weight: 3000;
+	font-size: 1em;
+	width: 35em;
+	height: 4em;
+	line-height: 4em;
+	margin-left: 30px;
+	margin-bottom: 0px;
+	text-align: center;
+	background-color: $lightcolor;
+	margin-top: 100px;
+
+  @include mobile{
+    width: 100%;
+    display: block;
+    margin-left: 0;
+  }
+
+  @include tablet{
+    width: 100%;
+    display: block;
+    margin: 100px auto 0 auto;
+  }
+}
+
+#free{
+	margin-left: 30px;
+	background-color: rgba(179,179,179,0.10);
+	padding: 20px;
+	width: 35em;
+  input, label{
+    	margin-bottom: 10px;
+  }
+
+  @include mobile{
+    width: 100%;
+    display: block;
+    margin-left: 0;
+  }
+
+  @include tablet{
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  #flex{
+  	display: flex;
+  	justify-content: flex-end;
+  	margin-bottom: 10px;
+
+    #submitc{
+    	font-family: $fonttitle;
+    	background-color: $lightcolor;
+    	height: 40px;
+    	width: 70px;
+    	color: white;
+    	font-weight: bold;
+    }
+  }
+}
+
+.brown{
+	color: $lightcolor;
+}
+
+.date{
+	font-size: 0.8em;
+}
+
+#backcomments{
+	background-color: white;
+	padding: 10px;
+	font-family: $fontcontent;
+	font-size: 0.9em;
+}
+
+aside p{
+	margin-top: 0;
+}
+
+#separatecomments{
+	padding-bottom: 10px;
+	border-bottom: 2px solid rgba(212,212,212,1.00);
+}
+
+#alert{
+	width: 100px;
+}
+
+label{
+	font-family: $fonttitle;
+	font-size: 0.9em;
+}
+
+#pagination{
+	font-family: $fonttitle;
+	text-align: right;
+  a{
+    font-weight: normal;
+  }
+}
+
+#text{
+	font-family: $fontcontent;
+	font-size: 0.8em;
+}
+
+.red{
+	color: red;
+}
+
+/*footer*/
+footer{
+	background-color: $darkcolor;
+	height: 30px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index:10;
+  a{
+    font-family: 'nature_spiritregular';
+  	color:white;
+  	line-height: 30px;
+  	width: 150px;
+  	display: block;
+  	margin: auto;
+  }
+}
+
+
+/*Search View*/
+
+#searchsection{
+	margin-left: 30px;
+	margin-right: 30px;
+	font-family: $fontcontent;
+  a{
+    display: block;
+  	margin-top: 20px;
+  	border: 1px solid $darkcolor;
+  	border-radius: 5px;
+  	padding: 10px;
+  	transition-property: background-color, color;
+  	transition-duration: 0.5s;
+    &:hover{
+      background-color: $lightcolor;
+    	color: white;
+    }
+  }
+}

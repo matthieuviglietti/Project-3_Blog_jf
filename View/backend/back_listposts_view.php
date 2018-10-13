@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style.css" rel="stylesheet"/>
+<link href="User/style/style-back.css" rel="stylesheet"/>
 <title>Administration du site - liste des posts</title>
 </head>
 
@@ -12,7 +12,7 @@
 		<h1>Jean Forteroche</h1>
 		<h2>Acteur - Écrivain</h2>
 	</div>
-	
+
 	<nav id="nav">
 		<ul>
 			<li><a href="index.php?action=board">Publier un épisode</a></li>
@@ -22,9 +22,9 @@
 		</ul>
 	</nav>
 	</header>
-	
+
 	<h3>Liste des épisodes déjà diffusés</h3>
-	
+
 	<div id="container">
 	<?php
 	while ($datapost = $listposts->fetch())
@@ -33,7 +33,7 @@
 		if (strtotime($datapost['post_date']) <= strtotime(date('Y-m-d H:i:s') ."\n"))
 		{
 		?>
-			
+
 			<section id="title">
 				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
 				<aside class="button">
@@ -41,7 +41,7 @@
 					<a class="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>
 				</aside>
 			</section>
-		
+
 		<?php
 		}
 		else
@@ -56,7 +56,7 @@
 			</section>
 		<?php
 		}
-	
+
 	}
 	?>
 	</div>

@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style-front.css" rel="stylesheet"/>
+<link href="User/style/style-front.css" rel="stylesheet"/>
 <title>-Blog - Jean Forteroche - Recherche</title>
 </head>
-	
+
 <header class="header">
 		<a href="index.php">
 			<div id="logo">
@@ -13,7 +13,7 @@
 				<h2>Acteur - Écrivain</h2>
 			</div>
 		</a>
-		
+
 		<div id="containsearch">
 			<a id="home" href="index.php">Accueil</a>
 			<div id="sb-search">
@@ -24,14 +24,14 @@
 				</form>
 			</div>
 		</div>
-	
+
 	</header>
 <body>
-	
+
 	<section id="searchsection">
 		<p>Votre recherche : <strong><?=htmlspecialchars($keyword)?></strong></p>
 		<p>Liste des résultats : </p>
-	
+
 		<?php
 
 		while ($searchresults = $search->fetch())
@@ -47,9 +47,9 @@
 		}
 		?>
 	</section>
-	
+
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
-	
+
 	<script type="text/javascript" id="cookiebanner"
  	src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"
 	data-height="60px"
@@ -59,6 +59,6 @@
 	data-expires="31536000"
 	data-moreinfo="https://www.cnil.fr/fr/cookies-traceurs-que-dit-la-loi">
 	</script>
-	
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="User/style-front.css" rel="stylesheet"/>
+<link href="User/style/style-front.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
 					  language_url : 'User/Language/fr_FR.js',
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	
+
 	<header class="header">
 		<a href="index.php">
 			<div id="logo">
@@ -21,7 +21,7 @@
 				<h2>Acteur - Écrivain</h2>
 			</div>
 		</a>
-		
+
 		<div id="containsearch">
 			<a id="home" href="index.php">Accueil</a>
 			<div id="sb-search">
@@ -32,20 +32,20 @@
 				</form>
 			</div>
 		</div>
-	
+
 	</header>
-	
+
 	<div class="margintitle">
     	<h5><?=nl2br($post['title'])?></h5>
 	</div>
-	
-	
+
+
 		<div id="postview">
 			<span>Publié par <?=$post['author']?> le <?=$post['post_date']?></span> </br>
 
 			<article id='contentpost'><?=$post['content']?></article>
 		</div>
-	
+
 		<h6>Lire et réagir</h6>
 		<div id="free">
 			<div id="comments">
@@ -55,9 +55,9 @@
 						<input class="sendcomment" type="submit" name="submit" value="Envoyer"/>
 					</form>
 			</div>
-		
+
 		<?php
-	
+
 			if ($getcomment->rowCount()==0)
 			{
 				echo "Il n'y a pas encore de commentaire";
@@ -75,11 +75,11 @@
 			}
 			?>
 		</div>
-	
 
-		
+
+
 
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
-	
+
     </body>
 </html>
