@@ -7,9 +7,8 @@
 <script>tinymce.init({selector:'textarea',
 					  language_url : 'User/Language/fr_FR.js',
 					  branding : false,
-					  width : 790,
-					  height: 600,
-					  content_css:'User/style/content.css'});</script>
+					  max_width : 790,
+					  max_height: 600});</script>
 <title>Administration du blog</title>
 </head>
 
@@ -31,13 +30,14 @@
 	</nav>
 	</header>
 
-	<aside><h3>Mettre à jour un épisode</h3></aside>
+<h3>Mettre à jour un épisode</h3>
 
 	<?php
 
 	while ($data = $updatepostview->fetch())
 	{
 		?>
+	<div id="space">
 		<form method="post" action="index.php?action=updatep&amp;id=<?=$data['id']?>">
 			<label id="titleform" for='title'>Titre de l'épisode : </label><br/>
 			<input name="title" type="text" Value="<?=$data['title']?>"/>
@@ -53,9 +53,12 @@
 			<input name="author" type="text" value="<?=$data['author']?>"/>
 			<br/>
 			<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'><?=$data['content']?></textarea>
-			<a href="index.php?action=listp" id="pcancel" type="cancel">Annuler</a>
-			<input id="psubmit" type="submit" value="Enregistrer"/>
+			<div id="subpost">
+				<a href="index.php?action=listp" id="pcancel" type="cancel">Annuler</a>
+				<input id="psubmit" type="submit" value="Enregistrer"/>
+			</div>
 		</form>
+	</div>
 	<?php
 	}
 	?>
