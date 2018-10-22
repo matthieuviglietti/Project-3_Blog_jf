@@ -2,8 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-back.css" rel="stylesheet"/>
-<title>Administration du site - liste des posts</title>
+<title>Administration du site - liste des épisodes</title>
 </head>
 
 <body>
@@ -35,10 +37,10 @@
 		?>
 
 			<section id="title">
-				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
+				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=htmlspecialchars($datapost['title'])?> "</h4>
 				<aside class="button">
-					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=$datapost['id']?>">Supprimer</a>
-					<a class="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>
+					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=htmlspecialchars($datapost['id'])?>">Supprimer</a>
+					<a class="update" href="index.php?action=updatepview&amp;id=<?=htmlspecialchars($datapost['id'])?>">Modifier</a>
 				</aside>
 			</section>
 
@@ -48,10 +50,10 @@
 		{
 		?>
 			<section id="titlefuture">
-				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=$datapost['title']?> "</h4>
+				<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> :<br/> <?=htmlspecialchars($datapost['title'])?> "</h4>
 				<aside class="button">
-					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=$datapost['id']?>">Supprimer</a>
-					<a class="update" href="index.php?action=updatepview&amp;id=<?=$datapost['id']?>">Modifier</a>
+					<a class="suppr" href="index.php?action=deletepconf&amp;id=<?=htmlspecialchars($datapost['id'])?>">Supprimer</a>
+					<a class="update" href="index.php?action=updatepview&amp;id=<?=htmlspecialchars($datapost['id'])?>">Modifier</a>
 				</aside>
 			</section>
 		<?php

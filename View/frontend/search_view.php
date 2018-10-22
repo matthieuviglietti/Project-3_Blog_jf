@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-front.css" rel="stylesheet"/>
 <title>-Blog - Jean Forteroche - Recherche</title>
 </head>
@@ -37,7 +39,7 @@
 		while ($searchresults = $search->fetch())
 		{
 			?>
-			<a id="searchresults" href="index.php?action=postfront&id=<?=$searchresults['id']?>">Épisode n°<?=$searchresults['chapter']?> : <?=$searchresults['title']?></a></br>
+			<a id="searchresults" href="index.php?action=postfront&id=<?=htmlspecialchars($searchresults['id'])?>">Épisode n°<?=htmlspecialchars($searchresults['chapter'])?> : <?=htmlspecialchars($searchresults['title'])?></a></br>
 			<?php
 			}
 

@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-login.css" rel="stylesheet"/>
 <meta charset="UTF-8">
-<title>Confirmation suppression Post</title>
+<title>Adminstration du blog - Confirmation suppression Post</title>
 </head>
 
 <body>
@@ -24,7 +26,7 @@
 	</nav>
 	</header>
 
-	<form id="login" action="index.php?action=deletep&amp;id=<?=$_GET['id']?>" method="post">
+	<form id="login" action="index.php?action=deletep&amp;id=<?=htmlspecialchars($_GET['id'])?>" method="post">
 	  <input id="submitsuppr" type="submit" value="Confirmer la suppression ?"/>
 	</form>
 

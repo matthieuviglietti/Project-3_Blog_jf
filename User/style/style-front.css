@@ -395,6 +395,13 @@ label {
 .red {
   color: red; }
 
+  .p{
+    display: inline-block;
+    width: auto;
+    margin: auto;
+    text-align: center;
+  }
+
 /*footer*/
 footer {
   background-color: #59767F;

@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-back.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
@@ -11,8 +13,8 @@
 					  max_height: 600,
 					  content_css:'User/style/content.css',
 					  plugins: "fullpage",
-					  fullpage_default_font_family: "''open_sansregular'"});</script>
-<title>Administration du blog</title>
+					  fullpage_default_font_family: "'open_sansregular'"});</script>
+<title>Administration du blog - Accueil</title>
 </head>
 
 <body>

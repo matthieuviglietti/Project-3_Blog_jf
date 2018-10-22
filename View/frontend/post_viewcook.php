@@ -3,6 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-front.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
@@ -36,12 +38,12 @@
 	</header>
 
 	<div class="margintitle">
-    	<h5><?=nl2br($post['title'])?></h5>
+    	<h5><?=nl2br(htmlspecialchars($post['title']))?></h5>
 	</div>
 
 
 		<div id="postview">
-			<p id="author">Publié par <?=$post['author']?> le <?=$post['post_date_fr']?></p>
+			<p id="author">Publié par <?=htmlspecialchars($post['author'])?> le <?=htmlspecialchars($post['post_date_fr'])?></p>
 
 			<article id='contentpost'><?=$post['content']?></article>
 		</div>
@@ -55,8 +57,8 @@
 			?>
 				<div id="free">
 			<div id="comments">
-					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
-						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value="<?=$_COOKIE['pseudo']?>"/><br/>
+					<form action="index.php?action=createc&amp;id=<?=htmlspecialchars($post['id'])?>" method="post">
+						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value="<?=htmlspecialchars($_COOKIE['pseudo'])?>"/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
 						<div id="flex">
 							<input id="submitc" type="submit" name="submit" value="Envoyer"/>
@@ -69,7 +71,7 @@
 				?>
 				<div id="free">
 			<div id="comments">
-					<form action="index.php?action=createc&amp;id=<?=$post['id']?>" method="post">
+					<form action="index.php?action=createc&amp;id=<?=htmlspecialchars($post['id'])?>" method="post">
 						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value=""/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
 						<div id="flex">
@@ -140,7 +142,7 @@
 					}
 					else
 					{
-						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.$post['id'].'">' . $i . '</a> ';
+						echo '<a href="index.php?action=postfront&page=' . $i . '&id='.htmlspecialchars($post['id']).'">' . $i . '</a> ';
 					}
 
 				}

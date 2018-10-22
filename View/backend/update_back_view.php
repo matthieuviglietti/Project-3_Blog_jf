@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-back.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
@@ -9,7 +11,7 @@
 					  branding : false,
 					  max_width : 790,
 					  max_height: 600});</script>
-<title>Administration du blog</title>
+<title>Administration du blog - Mise à jour d'un épisode</title>
 </head>
 
 <body>
@@ -38,19 +40,19 @@
 	{
 		?>
 	<div id="space">
-		<form method="post" action="index.php?action=updatep&amp;id=<?=$data['id']?>">
+		<form method="post" action="index.php?action=updatep&amp;id=<?=htmlspecialchars($data['id'])?>">
 			<label id="titleform" for='title'>Titre de l'épisode : </label><br/>
-			<input name="title" type="text" Value="<?=$data['title']?>"/>
+			<input name="title" type="text" Value="<?=htmlspecialchars($data['title'])?>"/>
 			<br/>
 			<label  for='chapter'>Épisode n°: </label><br/>
-			<input name="chapter" type="text" value="<?=$data['chapter']?>"/>
+			<input name="chapter" type="text" value="<?=htmlspecialchars($data['chapter'])?>"/>
 			<br/>
 			<?php date_default_timezone_set('Europe/Paris');?>
-			<input name="postdate" type="text" value="<?=$data['post_date_fr']?>" />
+			<input name="postdate" type="text" value="<?=htmlspecialchars($data['post_date_fr'])?>" />
 			<span>Format : JJ-MM-AAAA HH:MM:SS</span>
 			<br/>
 			<label id="auhorform" for='author'>Auteur : </label><br/>
-			<input name="author" type="text" value="<?=$data['author']?>"/>
+			<input name="author" type="text" value="<?=htmlspecialchars($data['author'])?>"/>
 			<br/>
 			<label id="content" for='content'>Texte de l'épisode : </label><br/><textarea name='content'><?=$data['content']?></textarea>
 			<div id="subpost">

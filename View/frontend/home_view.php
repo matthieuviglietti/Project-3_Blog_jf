@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="User/images/favicon.ico">
 <link href="User/style/style-front.css" rel="stylesheet"/>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea',
@@ -44,13 +46,13 @@
 					<section id="title">
 						<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> : <?= nl2br($datapost['title'])?>"</h4><br/>
 						<p class="book">Un billet simple pour l'Alaska</p>
-						<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date_fr']?></p><br/>
+						<p class="author">publié par <em><?=htmlspecialchars($datapost['author'])?></em> le <?= htmlspecialchars($datapost['post_date_fr'])?></p><br/>
 					</section>
 
 					<a href="index.php?action=postfront&amp;id=<?=$datapost['id']?>" id="titlemobile">
 						<h4>"Épisode n°<?= htmlspecialchars($datapost['chapter'])?> : <?= nl2br($datapost['title'])?>"</h4><br/>
 						<p class="book">Un billet simple pour l'Alaska</p>
-						<p class="author">publié par <em><?=$datapost['author']?></em> le <?= $datapost['post_date_fr']?></p><br/>
+						<p class="author">publié par <em><?=htmlspecialchars($datapost['author'])?></em> le <?= htmlspecialchars($datapost['post_date_fr'])?></p><br/>
 					</a>
 				<?php
 				if (strlen( $datapost['content'] < 800))
@@ -58,7 +60,7 @@
 					?>
 					<article id="content">
 						<?=$cut.'...</p>'?>
-						<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a>
+						<a id="read" href="index.php?action=postfront&amp;id=<?=htmlspecialchars($datapost['id'])?>">Lire la suite</a>
 					</article>
 				<?php
 				}
@@ -66,7 +68,7 @@
 					?>
 					<article id="content">
 						<?=$cut?>
-						<a id="read" href="index.php?action=postfront&amp;id=<?=$datapost['id']?>">Lire la suite</a>
+						<a id="read" href="index.php?action=postfront&amp;id=<?=htmlspecialchars($datapost['id'])?>">Lire la suite</a>
 					</article>
 				<?php
 				}
@@ -85,7 +87,7 @@
 				<article id="contentfuture">
 					<div id="soon">
 						<h4 class="grey">Épisode n°<?= htmlspecialchars($datapost['chapter'])?></h4><br/>
-						<h4 class="grey"><?=$datapost['post_date_fr']?></h4>
+						<h4 class="grey"><?=htmlspecialchars($datapost['post_date_fr'])?></h4>
 					</div>
 				</article>
 				<?php
