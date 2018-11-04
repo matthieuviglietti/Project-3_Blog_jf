@@ -58,8 +58,8 @@
 			</section>
 		<?php
 		}
-
 	}
+	$listposts->closeCursor();
 	?>
 	</div>
 </body>

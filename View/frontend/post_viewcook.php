@@ -88,6 +88,8 @@
 				<p id="text">Il n'y a pas encore de commentaire sur cet épisode</p>
 			<?php
 			}
+			$getcomment->closeCursor();
+
 			while ($comment = $getcomment->fetch())
 			{
 				if ($comment['alert'] == 1)
@@ -125,8 +127,8 @@
 					</section>
 					<?php
 				}
-
 			}
+			$getcomment->closeCursor();
 			?>
 
 			<p id="pagination">

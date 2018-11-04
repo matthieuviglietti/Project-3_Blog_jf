@@ -37,7 +37,7 @@
 	while ($datapost = $listposts->fetch())
 	{
 		date_default_timezone_set('Europe/Paris');
-		$cut = substr($datapost['content'], 0, 800);
+		$cut = substr($datapost['content'], 0, strpos($datapost['content'], ' ',800)) . " [...]";
 
 		if (strtotime($datapost['post_date']) <= strtotime(date('Y-m-d H:i:s') ."\n"))
 		{
@@ -55,11 +55,11 @@
 						<p class="author">publié par <em><?=htmlspecialchars($datapost['author'])?></em> le <?= htmlspecialchars($datapost['post_date_fr'])?></p><br/>
 					</a>
 				<?php
-				if (strlen( $datapost['content'] < 800))
+				if (strlen($datapost['content']) > 800)
 				{
 					?>
 					<article id="content">
-						<?=$cut.'...</p>'?>
+						<?=$cut.'</p>'?>
 						<a id="read" href="index.php?action=postfront&amp;id=<?=htmlspecialchars($datapost['id'])?>">Lire la suite</a>
 					</article>
 				<?php
@@ -97,13 +97,14 @@
 			<?php
 
 	}
+	$listposts->closeCursor();
 			?>
 
 	<footer><a href="index.php?action=gotologin">Administration du blog</a></footer>
 
 	<script type="text/javascript" id="cookiebanner"
  	src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"
-	data-height="60px"
+	data-height="80px"
 	data-bg="#59767F"
 	data-message="Pour un fonctionnement optimal notre site utilise des cookies. En continuant la navigation vous accepter l'utilisation de ceux-ci."
 	data-linkmsg="En savoir plus"

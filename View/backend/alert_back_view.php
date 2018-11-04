@@ -43,6 +43,8 @@
 					<p class="p">Il n'y a pas de commentaire signalé par les lecteurs<p>
 				<?php
 				}
+				$alertlist->closeCursor();
+
 				while ($alert = $alertlist->fetch())
 				{
 				?>
@@ -61,6 +63,7 @@
 					</section>
 				<?php
 				}
+				$alertlist->closeCursor();
 				?>
 
 

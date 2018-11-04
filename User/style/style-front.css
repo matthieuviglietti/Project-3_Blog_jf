@@ -17,7 +17,8 @@ a {
 
 p {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 1.3em; }
 
 header {
   width: 100%;
@@ -196,7 +197,8 @@ h4 {
   overflow: hidden; }
 
 #content {
-  background-color: rgba(179, 179, 179, 0.1); }
+  background-color: rgba(179, 179, 179, 0.1);
+  font-size: 0.8em; }
   @media (max-width: 700px) {
     #content {
       display: none; } }
@@ -204,7 +206,7 @@ h4 {
     font-family: "open_sansregular", "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"; }
     @media (max-width: 960px) {
       #content span, #content div, #content p {
-        font-size: 0.8em; } }
+        font-size: 0.7em; } }
 
 #contentfuture {
   background-image: url(../images/Alaska-blur.png);
@@ -373,7 +375,8 @@ aside p {
 
 #separatecomments {
   padding-bottom: 10px;
-  border-bottom: 2px solid #d4d4d4; }
+  border-bottom: 2px solid #d4d4d4;
+  font-size: 0.8em; }
 
 #alert {
   width: 100px; }
@@ -394,13 +397,6 @@ label {
 
 .red {
   color: red; }
-
-  .p{
-    display: inline-block;
-    width: auto;
-    margin: auto;
-    text-align: center;
-  }
 
 /*footer*/
 footer {
@@ -435,3 +431,5 @@ footer {
     #searchsection a:hover {
       background-color: #2B9EC5;
       color: white; }
+
+/*# sourceMappingURL=style-front.css.map */

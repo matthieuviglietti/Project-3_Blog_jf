@@ -63,6 +63,7 @@
 	</div>
 	<?php
 	}
+	$updatepostview->closeCursor();
 	?>
 
 
