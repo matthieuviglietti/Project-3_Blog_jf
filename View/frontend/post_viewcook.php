@@ -58,7 +58,7 @@
 				<div id="free">
 			<div id="comments">
 					<form action="index.php?action=createc&amp;id=<?=htmlspecialchars($post['id'])?>" method="post">
-						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value="<?=htmlspecialchars($_COOKIE['pseudo'])?>"/><br/>
+						<label name='author'>Votre nom:</label><br/> <input type="text" name="author" value="<?=htmlspecialchars($_COOKIE['pseudo'])?>"/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
 						<div id="flex">
 							<input id="submitc" type="submit" name="submit" value="Envoyer"/>
@@ -72,7 +72,7 @@
 				<div id="free">
 			<div id="comments">
 					<form action="index.php?action=createc&amp;id=<?=htmlspecialchars($post['id'])?>" method="post">
-						<label name='author'>Votre nom:</label></br> <input type="text" name="author" value=""/><br/>
+						<label name='author'>Votre nom:</label><br/> <input type="text" name="author" value=""/><br/>
 						<label name='comment'>Votre commentaire :</label> <textarea type="text" name="comment"></textarea><br/>
 						<div id="flex">
 							<input id="submitc" type="submit" name="submit" value="Envoyer"/>
@@ -88,7 +88,6 @@
 				<p id="text">Il n'y a pas encore de commentaire sur cet épisode</p>
 			<?php
 			}
-			$getcomment->closeCursor();
 
 			while ($comment = $getcomment->fetch())
 			{

@@ -43,7 +43,7 @@
 			<?php
 			}
 
-		$search->closeCursor();
+		
 
 		if ($search->rowCount() == 0)
 		{

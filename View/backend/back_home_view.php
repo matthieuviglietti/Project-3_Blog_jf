@@ -42,7 +42,7 @@
 		<form method="post" action="index.php?action=createp">
 			<label  for='title'>Titre de l'épisode : </label><br/>
 			<input name="title" type="text"/>
-			</br>
+			<br/>
 			<label  for='post_date'>Date et heure de publication : </label><br/>
 			<?php date_default_timezone_set('Europe/Paris');?>
 			<input name="postdate" type="text" value="<?= date('d-m-Y H:i:s') ."\n"?>" />
